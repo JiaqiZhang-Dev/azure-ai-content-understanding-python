@@ -1,0 +1,41 @@
+{
+  "description": "Archboard Review Meeting Analyzer - Extract chapters, knowledge, question, suggestion, and code samples from review meeting videos.",
+  "scenario": "videoShot",
+  "config": {
+    "returnDetails": true,
+    "enableSegmentation": true,
+    "segmentationMode": "custom",
+    "segmentationDefinition": "Segment the video into chapters based on meeting topics. Each chapter should include topic, timestamps, and extracted knowledge (with question and suggestion).",
+    "locales": ["en-US"]
+  },
+  "BaseAnalyzerId": "prebuilt-videoAnalyzer",
+  "fieldSchema": {
+  "name": "Content Understanding - Archboard Review Meeting Analyzer",
+    "fields": {
+      "Chapters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ChapterId": { "type": "string" },
+            "Topic": { "type": "string", "method": "generate", "description": "Topic of the chapter." },
+            "BeginTimestamp": { "type": "string", "description": "Start time of the chapter." },
+            "EndTimestamp": { "type": "string", "description": "End time of the chapter." },
+            "IsValuable": { "type": "boolean", "description": "Whether the chapter contains valuable knowledge." },
+            "KnowledgeItems": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "Description": { "type": "string", "method": "generate", "description": "Summary of the knowledge item." },
+                  "Question": { "type": "string", "method": "generate", "description": "Key question discussed, including any referenced code samples." },
+                  "Suggestion": { "type": "string", "method": "generate", "description": "Main suggestion provided, including any referenced code samples." }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
