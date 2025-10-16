@@ -1,35 +1,55 @@
 {
-  "description": "Archboard Review Meeting Analyzer - Extract chapters, knowledge, question, suggestion, and code samples from review meeting videos.",
+  "description": "API/SDK Review Meeting Analyzer - Extract meaningful API design problems, reviewer decisions with code examples, and reusable knowledge from review meetings. Focus only on segments with concrete API/SDK discussions.",
   "scenario": "videoShot",
   "config": {
     "returnDetails": true,
     "enableSegmentation": true,
     "segmentationMode": "custom",
-    "segmentationDefinition": "Segment the video into chapters based on meeting topics. Each chapter should include topic, timestamps, and extracted knowledge (with question and suggestion).",
-    "locales": ["en-US"]
+    "segmentationDefinition": "Segment the video based on substantive API/SDK review discussions. ONLY create segments when there are concrete API design problems being discussed with specific reviewer decisions. Skip introductions, general discussions, and administrative content. Focus on segments containing: specific function signatures, parameter design issues, naming convention debates, error handling patterns, code examples, breaking changes, or design pattern discussions. Each segment must contain actionable API review knowledge with clear problems and decisions.",
+    "locales": [
+      "en-US"
+    ]
   },
   "BaseAnalyzerId": "prebuilt-videoAnalyzer",
   "fieldSchema": {
-  "name": "Content Understanding - Archboard Review Meeting Analyzer",
+    "name": "Content Understanding - API/SDK Review Meeting Analyzer",
     "fields": {
-      "Chapters": {
+      "Segments": {
         "type": "array",
         "items": {
           "type": "object",
           "properties": {
-            "ChapterId": { "type": "string" },
-            "Topic": { "type": "string", "method": "generate", "description": "Topic of the chapter." },
-            "BeginTimestamp": { "type": "string", "description": "Start time of the chapter." },
-            "EndTimestamp": { "type": "string", "description": "End time of the chapter." },
-            "IsValuable": { "type": "boolean", "description": "Whether the chapter contains valuable knowledge." },
+            "SegmentId": {
+              "type": "string"
+            },
+            "SegmentTopic": {
+              "type": "string",
+              "method": "generate",
+              "description": "The specific API/SDK design topic being reviewed (e.g., 'Overload Design for begin_analyze Method', 'Parameter Naming Convention Decision', 'Error Handling Pattern'). Must be a concrete API design topic, not general discussion."
+            },
             "KnowledgeItems": {
               "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
-                  "Description": { "type": "string", "method": "generate", "description": "Summary of the knowledge item." },
-                  "Question": { "type": "string", "method": "generate", "description": "Key question discussed, including any referenced code samples." },
-                  "Suggestion": { "type": "string", "method": "generate", "description": "Main suggestion provided, including any referenced code samples." }
+                  "StartTimestamp": {
+                    "type": "string",
+                    "description": "Start timestamp in format HH:MM:SS.mmm"
+                  },
+                  "EndTimestamp": {
+                    "type": "string",
+                    "description": "End timestamp in format HH:MM:SS.mmm"
+                  },
+                  "APIProblem": {
+                    "type": "string",
+                    "method": "generate",
+                    "description": "DETAILED description of the specific API design problem or concern raised. Must include: 1) What the problem is, 2) Why it's a problem, 3) Code examples showing the problematic design if discussed (include function signatures, parameter lists, or code snippets). If no concrete problem exists, leave empty. Examples: 'Function signature begin_analyze(url=None, data=None) is ambiguous - users might pass both parameters' with code example, or 'Parameter name customer_name does not match REST API field customerName causing confusion' with before/after examples."
+                  },
+                  "ReviewerDecision": {
+                    "type": "string",
+                    "method": "generate",
+                    "description": "DETAILED description of the specific decision made by reviewers with clear rationale and code examples if discussed. Must include: 1) The decision (approved/rejected/deferred), 2) Clear rationale explaining why, 3) Recommended code patterns or changes with examples if applicable, 4) Any action items. If the decision is vague, unclear, or just 'will discuss later', leave empty. Examples: 'APPROVED: Use overloads with explicit parameters. Rationale: Improves discoverability. Implementation: def begin_analyze(url: str) and def begin_analyze(data: bytes) instead of optional parameters' or 'REJECTED: Cannot extend string class. Rationale: Too invasive. Alternative: Create helper class with static methods'."
+                  }
                 }
               }
             }

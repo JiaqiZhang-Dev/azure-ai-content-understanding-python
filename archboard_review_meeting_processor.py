@@ -6,7 +6,7 @@ import uuid
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
-from requests.exceptions import HTTPError
+from requests.exceptions import HTTPError, ConnectionError
 
 # Load environment variables
 load_dotenv(find_dotenv())
@@ -62,47 +62,29 @@ except HTTPError as exc:
 logging.info(f"Analyzing video: {VIDEO_FILE_PATH}")
 try:
     analyze_response = client.begin_analyze(analyzer_id, file_location=VIDEO_FILE_PATH)
-    result_json = client.poll_result(analyze_response, timeout_seconds=10000000000, polling_interval_seconds=10)
-    logging.info("Analysis complete.")
-except HTTPError as exc:
-    error_text = exc.response.text if exc.response is not None else str(exc)
+    result_json = client.poll_result(analyze_response, timeout_seconds=3600, polling_interval_seconds=10)
+    logging.info("✅ Analysis complete.")
+    
+    # Save the raw API response to a JSON file for later processing
+    output_dir = Path("output")
+    output_dir.mkdir(exist_ok=True)
+    raw_result_path = output_dir / "archboard_review_meeting_raw_result.json"
+    with open(raw_result_path, "w", encoding="utf-8") as f:
+        json.dump(result_json, f, indent=2, ensure_ascii=False)
+    logging.info(f"📁 Raw API response saved to {raw_result_path}")
+    logging.info(f"💡 To process this result, run: python process_review_meeting_result.py")
+    
+except (HTTPError, ConnectionError) as exc:
+    error_text = exc.response.text if hasattr(exc, 'response') and exc.response is not None else str(exc)
     logging.error("Video analysis failed: %s", error_text)
+    logging.error("If you see connection errors, the analysis may still be running. Check Azure portal for operation status.")
     raise
+finally:
+    # Clean up analyzer
+    try:
+        client.delete_analyzer(analyzer_id)
+        logging.info("🗑️  Analyzer deleted.")
+    except Exception as e:
+        logging.warning(f"Analyzer deletion failed: {e}")
 
-# Extract and format results
-def format_chapter(chapter):
-    topic = chapter.get("Topic", "Unknown")
-    begin = chapter.get("BeginTimestamp", "-")
-    end = chapter.get("EndTimestamp", "-")
-    is_valuable = chapter.get("IsValuable", False)
-    output = [f"# Chapter: {topic} ({begin} - {end})", f"Valuable: {'Yes' if is_valuable else 'No'}"]
-    knowledge_items = chapter.get("KnowledgeItems", [])
-    for idx, knowledge in enumerate(knowledge_items):
-        desc = knowledge.get("Description", "")
-        question = knowledge.get("Question", "")
-        suggestion = knowledge.get("Suggestion", "")
-        output.append(f"## Knowledge {idx+1}: {desc}")
-        if question:
-            output.append(f"**Question:** {question}")
-        if suggestion:
-            output.append(f"**Suggestion:** {suggestion}")
-    return '\n'.join(output)
-
-chapters = result_json.get("Chapters", [])
-markdown_output = []
-for chapter in chapters:
-    markdown_output.append(format_chapter(chapter))
-
-# Write summary to markdown file
-summary_path = Path("output/archboard_review_meeting_summary.md")
-summary_path.parent.mkdir(exist_ok=True)
-with open(summary_path, "w", encoding="utf-8") as f:
-    f.write('\n\n'.join(markdown_output))
-logging.info(f"Summary written to {summary_path}")
-
-# Optional: Clean up analyzer
-try:
-    client.delete_analyzer(analyzer_id)
-    logging.info("Analyzer deleted.")
-except Exception as e:
-    logging.warning(f"Analyzer deletion failed: {e}")
+logging.info("✅ Analysis process completed!")
