@@ -26,7 +26,6 @@ import logging
 import json
 from pathlib import Path
 import subprocess
-import base64
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -35,9 +34,14 @@ logging.basicConfig(level=logging.INFO)
 RAW_RESULT_PATH = Path("output/archboard_review_meeting_raw_result.json")
 VIDEO_FILE_NAME = "AzureSDKReviewMeetingRecording.mp4"
 VIDEO_FILE_PATH = Path("data") / VIDEO_FILE_NAME
+KEYFRAMES_DIR = Path("output/keyframes")
 
-def extract_frame_as_base64(video_path, timestamp_str):
-    """Extract a frame at the given timestamp and return as base64 data URL."""
+def extract_frame_as_file(video_path, timestamp_str, output_path):
+    """Extract a frame at the given timestamp and save it as an image file.
+    
+    Returns:
+        Path to the saved image file, or None if extraction failed.
+    """
     try:
         if not video_path.exists():
             logging.error(f"Video file not found: {video_path}")
@@ -49,16 +53,18 @@ def extract_frame_as_base64(video_path, timestamp_str):
         
         logging.info(f"Extracting frame at {timestamp_str} ({seconds}s) from {video_path.name}")
         
-        # Use ffmpeg to extract frame to stdout
+        # Create output directory if it doesn't exist
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Use ffmpeg to extract frame to file
         cmd = [
             'ffmpeg', '-ss', str(seconds), '-i', str(video_path),
-            '-vframes', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'
+            '-vframes', '1', '-y', str(output_path)
         ]
         
-        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=True)
-        img_data = base64.b64encode(result.stdout).decode('utf-8')
-        logging.info(f"Successfully extracted frame at {timestamp_str}")
-        return f"data:image/png;base64,{img_data}"
+        subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+        logging.info(f"Successfully extracted frame to {output_path}")
+        return output_path
     except FileNotFoundError as e:
         logging.error(f"ffmpeg not found. Please install ffmpeg to enable frame extraction.")
         logging.error(f"Install ffmpeg: https://ffmpeg.org/download.html")
@@ -102,8 +108,13 @@ def parse_segment(segment_obj):
     
     return parsed
 
-def format_segment(segment):
-    """Format a segment with its knowledge items into markdown."""
+def format_segment(segment, segment_index):
+    """Format a segment with its knowledge items into markdown.
+    
+    Args:
+        segment: The segment data dictionary
+        segment_index: The 1-based index of the segment (for naming keyframe files)
+    """
     segment_id = segment.get("SegmentId", "Unknown")
     segment_topic = segment.get("SegmentTopic", "Unknown Topic")
     segment_summary = segment.get("SegmentSummary", "")
@@ -150,10 +161,17 @@ def format_segment(segment):
         
         if key_frame:
             output.append(f"**Reference Frame:** {key_frame}")
-            # Extract frame image
-            img_data_url = extract_frame_as_base64(VIDEO_FILE_PATH, key_frame)
-            if img_data_url:
-                output.append(f'<img src="{img_data_url}" alt="Key Frame at {key_frame}" width="600"/>')
+            # Extract frame image and save as file
+            # Use sanitized timestamp for filename (replace : with -)
+            timestamp_safe = key_frame.replace(":", "-").replace(".", "-")
+            image_filename = f"segment_{segment_index}_guideline_{idx}_{timestamp_safe}.png"
+            image_path = KEYFRAMES_DIR / image_filename
+            
+            extracted_path = extract_frame_as_file(VIDEO_FILE_PATH, key_frame, image_path)
+            if extracted_path:
+                # Use relative path from output directory
+                relative_path = f"keyframes/{image_filename}"
+                output.append(f'<img src="{relative_path}" alt="Key Frame at {key_frame}" width="600"/>')
         
         output.append("")
         
@@ -211,8 +229,8 @@ markdown_output = [
     ""
 ]
 
-for segment in segments:
-    markdown_output.append(format_segment(segment))
+for idx, segment in enumerate(segments, 1):
+    markdown_output.append(format_segment(segment, idx))
     markdown_output.append("---")
     markdown_output.append("")
 
