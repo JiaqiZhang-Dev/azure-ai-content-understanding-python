@@ -1,5 +1,5 @@
 # API/SDK Design Guidelines
-**Extracted from:** AzureSDKReviewMeetingRecording.mp4
+**Extracted from:** archboard review meeting
 
 > This document contains reusable API/SDK design principles and best practices extracted from technical review meetings.
 > These guidelines can be used by developers and LLMs to review APIs or design better SDKs.
@@ -22,7 +22,6 @@
 ### Design Guideline 1: Content Understanding Python SDK Design
 **Source Discussion Time:** 00:00:28.688 - 00:01:38.625
 **Reference Frame:** 00:00:28.688
-<img src="keyframes/segment_2_guideline_1_00-00-28-688.png" alt="Key Frame at 00:00:28.688" width="600"/>
 
 **Problem:**
 The Python SDK for content understanding presents a challenge in managing optional settings and complex data types. Developers often face issues with ambiguous parameters and lack of clarity in API usage, leading to potential errors and inefficient code. This problem is common in scenarios where APIs need to handle diverse data inputs and provide flexible configuration options, such as in content classification and analysis tasks.
@@ -39,7 +38,6 @@ To improve the Python SDK design, it is recommended to use clear and explicit pa
 ### Design Guideline 1: Multi-Model Content Reasoning
 **Source Discussion Time:** 00:02:23.080 - 00:02:51.920
 **Reference Frame:** 00:02:23.625
-<img src="keyframes/segment_3_guideline_1_00-02-23-625.png" alt="Key Frame at 00:02:23.625" width="600"/>
 
 **Problem:**
 APIs designed for multi-model content reasoning often struggle with integrating diverse data types such as documents, images, videos, and audio. This complexity can lead to issues in content extraction and reasoning capabilities, where developers may face challenges in ensuring consistent and accurate data processing across different media formats. Common scenarios include applications that require cross-media analysis and synthesis, such as multimedia content management systems.
@@ -56,7 +54,6 @@ To address multi-model content reasoning challenges, APIs should implement stand
 ### Design Guideline 1: Patch Overrides for Enhanced Usability
 **Source Discussion Time:** 00:08:10.375 - 00:09:06.688
 **Reference Frame:** 00:08:10.375
-<img src="keyframes/segment_4_guideline_1_00-08-10-375.png" alt="Key Frame at 00:08:10.375" width="600"/>
 
 **Problem:**
 In SDK design, providing direct access to fields like StringField and NumberField can lead to confusion when these fields have similar names to existing properties, such as 'value'. This can result in ambiguity and potential misuse, especially when models are already structured as dictionaries. Common scenarios include SDKs where developers need to access specific data types directly, leading to potential conflicts with existing dictionary keys.
@@ -67,7 +64,6 @@ To enhance usability in SDKs, implement unified access methods that clearly diff
 ### Design Guideline 2: Convenient Methods for Field Extraction
 **Source Discussion Time:** 00:09:07.280 - 00:10:27.640
 **Reference Frame:** 00:16:17.312
-<img src="keyframes/segment_4_guideline_2_00-16-17-312.png" alt="Key Frame at 00:16:17.312" width="600"/>
 
 **Problem:**
 In SDKs, extracting field values based on type can be cumbersome, requiring users to check the type before accessing the correct field. This process can be inefficient and error-prone, especially when dealing with multiple field types like strings and numbers. Common scenarios include SDKs where users need to extract values from complex data structures, leading to potential confusion and increased complexity.
@@ -78,7 +74,6 @@ Implement convenient methods in SDKs that allow users to extract field values wi
 ### Design Guideline 3: Avoiding Ambiguous Parameters in SDK Design
 **Source Discussion Time:** 00:10:29.760 - 00:11:13.840
 **Reference Frame:** 00:16:17.312
-<img src="keyframes/segment_4_guideline_3_00-16-17-312.png" alt="Key Frame at 00:16:17.312" width="600"/>
 
 **Problem:**
 Using positional parameters in SDK design can lead to breaking changes and maintenance challenges. Positional parameters are susceptible to changes in order, making them fragile and prone to errors. This is particularly problematic in SDKs where parameters may evolve over time, leading to compatibility issues and increased maintenance overhead.
@@ -89,7 +84,6 @@ Favor named parameters over positional ones in SDK design to ensure stability an
 ### Design Guideline 4: Beta Release Considerations for SDKs
 **Source Discussion Time:** 00:11:15.680 - 00:12:17.840
 **Reference Frame:** 00:16:17.312
-<img src="keyframes/segment_4_guideline_4_00-16-17-312.png" alt="Key Frame at 00:16:17.312" width="600"/>
 
 **Problem:**
 Releasing SDKs in beta can introduce challenges related to feature completeness and stability. Beta releases often contain features that are not fully vetted, leading to potential issues when transitioning to general availability (GA). Common scenarios include SDKs where beta features may not align with long-term goals, causing disruptions during the GA transition.
@@ -100,7 +94,6 @@ During beta releases, prioritize feature stability and alignment with long-term 
 ### Design Guideline 5: Efficient Content Extraction in SDKs
 **Source Discussion Time:** 00:12:18.240 - 00:13:11.800
 **Reference Frame:** 00:16:17.312
-<img src="keyframes/segment_4_guideline_5_00-16-17-312.png" alt="Key Frame at 00:16:17.312" width="600"/>
 
 **Problem:**
 Content extraction in SDKs can be inefficient if not designed properly, especially when dealing with multiple input types like URLs and binary data. Users may face challenges in extracting content seamlessly, leading to increased complexity and reduced usability. Common scenarios include SDKs where content extraction is a core feature, requiring efficient handling of various input types.
@@ -111,7 +104,6 @@ Design SDKs to support efficient content extraction by providing clear methods f
 ### Design Guideline 6: Preview and Custom Analyzers in SDKs
 **Source Discussion Time:** 00:13:12.480 - 00:14:12.480
 **Reference Frame:** 00:16:17.312
-<img src="keyframes/segment_4_guideline_6_00-16-17-312.png" alt="Key Frame at 00:16:17.312" width="600"/>
 
 **Problem:**
 SDKs often provide both preview and custom analyzers, which can lead to confusion if not clearly differentiated. Users may struggle to understand the capabilities and limitations of each type, leading to potential misuse and reduced effectiveness. Common scenarios include SDKs where analyzers are a key feature, requiring clear guidance on their use and customization.
@@ -122,7 +114,6 @@ Clearly differentiate between preview and custom analyzers in SDKs by providing 
 ### Design Guideline 7: Handling Multiple Input Types in SDKs
 **Source Discussion Time:** 00:14:42.640 - 00:15:38.880
 **Reference Frame:** 00:16:17.312
-<img src="keyframes/segment_4_guideline_7_00-16-17-312.png" alt="Key Frame at 00:16:17.312" width="600"/>
 
 **Problem:**
 SDKs that handle multiple input types can face challenges in ensuring seamless integration and usability. Users may encounter difficulties in specifying input types correctly, leading to potential errors and reduced efficiency. Common scenarios include SDKs where multiple input types are supported, requiring clear guidance on their use and integration.
@@ -133,7 +124,6 @@ Provide clear methods for handling multiple input types in SDKs to ensure seamle
 ### Design Guideline 8: Long Running Operations in SDKs
 **Source Discussion Time:** 00:15:38.880 - 00:16:17.312
 **Reference Frame:** 00:16:17.312
-<img src="keyframes/segment_4_guideline_8_00-16-17-312.png" alt="Key Frame at 00:16:17.312" width="600"/>
 
 **Problem:**
 Long running operations in SDKs can be challenging to manage, especially when dealing with asynchronous processes. Users may face difficulties in tracking progress and handling results, leading to potential inefficiencies and reduced effectiveness. Common scenarios include SDKs where long running operations are a core feature, requiring efficient management and tracking.
@@ -144,7 +134,6 @@ Implement clear methods for managing long running operations in SDKs to ensure e
 ### Design Guideline 9: Python SDK Hero Scenarios and Design Patterns
 **Source Discussion Time:** 00:16:17.312 - 00:35:51.000
 **Reference Frame:** 00:16:17.312
-<img src="keyframes/segment_4_guideline_9_00-16-17-312.png" alt="Key Frame at 00:16:17.312" width="600"/>
 
 **Problem:**
 The segment focuses on the Python SDK hero scenarios, discussing the design patterns and usability enhancements for the Content Understanding service. The discussion includes the introduction of patch overrides to simplify field access and improve user experience. The team addresses potential issues with field naming conventions and the importance of avoiding positional parameters to prevent breaking changes. The conversation highlights the need for careful consideration in SDK design to ensure seamless integration and future-proofing. The segment also covers the hero scenarios, demonstrating how users can extract content using prebuilt document analyzers, both from URLs and binary data, showcasing the flexibility and capabilities of the SDK.
@@ -161,7 +150,6 @@ The segment provides insights into the Python SDK hero scenarios, emphasizing th
 ### Design Guideline 1: Extract Structured Fields from Documents
 **Source Discussion Time:** 00:35:52.938 - 00:39:28.250
 **Reference Frame:** 00:36:00.688
-<img src="keyframes/segment_5_guideline_1_00-36-00-688.png" alt="Key Frame at 00:36:00.688" width="600"/>
 
 **Problem:**
 APIs often struggle with extracting structured fields from documents, especially when dealing with diverse data types like integers, strings, objects, or arrays. For example, extracting customer names from invoices can be challenging if the API does not support structured data extraction. This issue arises in scenarios where APIs need to process complex documents and provide structured outputs, leading to difficulties in data handling and integration.
@@ -172,7 +160,6 @@ To address this, APIs should implement structured data extraction capabilities. 
 ### Design Guideline 2: Enhance Type Safety with Enums in Python SDK
 **Source Discussion Time:** 00:38:44.200 - 00:42:48.280
 **Reference Frame:** 00:39:01.125
-<img src="keyframes/segment_5_guideline_2_00-39-01-125.png" alt="Key Frame at 00:39:01.125" width="600"/>
 
 **Problem:**
 In Python SDKs, relying on property names for type inference can lead to errors and poor developer experience, especially when properties are typed as 'any'. For instance, developers may incorrectly assume the type of a property based on its name, leading to runtime errors. This problem is common in scenarios where SDKs need to provide type-safe interfaces for diverse data types, such as strings and numbers.
@@ -189,7 +176,6 @@ To improve type safety, SDKs should use enums to represent property types, allow
 ### Design Guideline 1: Preserve Type Information with Helper Methods
 **Source Discussion Time:** 00:42:48.680 - 00:43:03.920
 **Reference Frame:** 00:42:53.562
-<img src="keyframes/segment_6_guideline_1_00-42-53-562.png" alt="Key Frame at 00:42:53.562" width="600"/>
 
 **Problem:**
 APIs often expose data in a way that does not preserve type information, leading to potential misuse and errors. For example, a method might return a generic 'value' object without specifying its type, forcing developers to guess or check the type at runtime. This can degrade performance and increase the likelihood of bugs, especially in languages with weak type systems.
@@ -206,7 +192,6 @@ To preserve type information, APIs should offer helper methods that return data 
 ### Design Guideline 1: Designing Custom Content Analyzers
 **Source Discussion Time:** 00:43:13.640 - 00:50:48.375
 **Reference Frame:** 00:45:51.938
-<img src="keyframes/segment_7_guideline_1_00-45-51-938.png" alt="Key Frame at 00:45:51.938" width="600"/>
 
 **Problem:**
 Creating custom content analyzers can be complex due to the need to define specific behaviors and schemas. Developers often struggle with setting up the base analyzer and configuring the custom analyzer to handle different modalities like audio, video, or documents. This complexity can lead to misconfigurations and inefficient analysis processes.
@@ -223,7 +208,6 @@ To design effective custom content analyzers, start by clearly defining the base
 ### Design Guideline 1: Handling Long-Running Operations in SDKs
 **Source Discussion Time:** 00:50:48.375 - 00:58:51.438
 **Reference Frame:** 00:53:26.125
-<img src="keyframes/segment_8_guideline_1_00-53-26-125.png" alt="Key Frame at 00:53:26.125" width="600"/>
 
 **Problem:**
 Managing long-running operations in SDKs can be challenging, especially when dealing with asynchronous processes that require operation IDs for status checks and result retrieval. Developers often face difficulties in extracting operation IDs from pollers and handling different response types, leading to inefficient workflows and potential errors.
@@ -240,7 +224,6 @@ To effectively manage long-running operations, SDKs should provide clear mechani
 ### Design Guideline 1: Improving SDK Usability with Patching Techniques
 **Source Discussion Time:** 00:58:51.438 - 01:03:51.250
 **Reference Frame:** 01:00:24.688
-<img src="keyframes/segment_9_guideline_1_01-00-24-688.png" alt="Key Frame at 01:00:24.688" width="600"/>
 
 **Problem:**
 In SDKs, handling complex operations like face comparison can become cumbersome when input types are ambiguous or require extensive setup. Developers often struggle with differentiating between input types such as URLs, byte arrays, or IDs, leading to potential errors and reduced usability. This complexity is exacerbated when SDKs require manual patching to handle these inputs effectively.
@@ -257,7 +240,6 @@ To enhance SDK usability, implement patching techniques that simplify input hand
 ### Design Guideline 1: Preserve Type Information in Serialization
 **Source Discussion Time:** 01:03:50.440 - 01:07:06.312
 **Reference Frame:** 01:06:06.125
-<img src="keyframes/segment_10_guideline_1_01-06-06-125.png" alt="Key Frame at 01:06:06.125" width="600"/>
 
 **Problem:**
 When designing APIs, a common issue is losing type information during serialization and deserialization processes. For example, a class 'ApiClient' might have a property 'sourceExpression' defined as a scalar type with helper methods for conversion. However, when serialized to a wire format like JSON, this type information can be lost, reducing the API's usability and defeating the purpose of the original design. This problem often occurs when APIs are designed to be language-agnostic but need to maintain type integrity across different platforms.
@@ -268,7 +250,6 @@ To preserve type information, use serialization frameworks that support custom c
 ### Design Guideline 2: Utilize Helper Methods for Type Conversion
 **Source Discussion Time:** 01:04:21.720 - 01:07:06.312
 **Reference Frame:** 01:06:06.125
-<img src="keyframes/segment_10_guideline_2_01-06-06-125.png" alt="Key Frame at 01:06:06.125" width="600"/>
 
 **Problem:**
 APIs often need to convert data types seamlessly, but this can be problematic if the conversion logic is not well-integrated. For example, a scalar type in TypeSpec might have helper methods for conversion, but if these are not utilized properly, the API can lose functionality when ported to languages like Python, where it defaults to a simple string. This issue arises in scenarios where APIs are designed with complex type systems that need to be simplified for different programming environments.
@@ -285,7 +266,6 @@ Implement helper methods within your API design to facilitate type conversion. B
 ### Design Guideline 1: Implement Strongly Typed Helper Methods
 **Source Discussion Time:** 01:07:06.312 - 01:12:01.312
 **Reference Frame:** 01:07:54.188
-<img src="keyframes/segment_11_guideline_1_01-07-54-188.png" alt="Key Frame at 01:07:54.188" width="600"/>
 
 **Problem:**
 In API design, especially when dealing with type systems, a common issue is the lack of strongly typed helper methods. For instance, when a source expression is emitted into Python, it often loses its class name and becomes a simple string, which can lead to confusion and reduce the effectiveness of the API. This problem is prevalent in scenarios where APIs need to maintain type integrity across different languages and platforms.
@@ -296,7 +276,6 @@ To address this issue, implement strongly typed helper methods that can handle t
 ### Design Guideline 2: Addressing Emitter Issues in API Design
 **Source Discussion Time:** 01:12:01.312 - 01:16:05.688
 **Reference Frame:** 01:12:01.312
-<img src="keyframes/segment_11_guideline_2_01-12-01-312.png" alt="Key Frame at 01:12:01.312" width="600"/>
 
 **Problem:**
 Emitter issues in API design can lead to inconsistencies, such as when a property is both an extensible enum and a discriminator, resulting in incorrect type generation. This can confuse users and reduce the API's reliability. Such issues often occur when APIs are designed to be flexible but need to maintain consistency across different platforms.
@@ -313,7 +292,6 @@ To resolve emitter issues, ensure that the code generation process correctly han
 ### Design Guideline 1: Handling Mutually Exclusive Parameters
 **Source Discussion Time:** 01:16:05.688 - 01:17:06.938
 **Reference Frame:** 01:16:08.562
-<img src="keyframes/segment_12_guideline_1_01-16-08-562.png" alt="Key Frame at 01:16:08.562" width="600"/>
 
 **Problem:**
 In API design, handling mutually exclusive parameters can be challenging, especially when dealing with overloads. A common issue is the lack of clear guidance on how to manage these parameters, leading to confusion and potential errors in API usage. This problem often arises in scenarios where APIs need to provide flexible options without compromising on clarity and usability.
@@ -330,7 +308,6 @@ To address this issue, implement overloads that clearly define mutually exclusiv
 ### Design Guideline 1: Field Definitions in RESTful APIs
 **Source Discussion Time:** 01:17:26.540 - 01:18:20.580
 **Reference Frame:** 01:17:26.562
-<img src="keyframes/segment_13_guideline_1_01-17-26-562.png" alt="Key Frame at 01:17:26.562" width="600"/>
 
 **Problem:**
 Defining field definitions in RESTful APIs using a pattern similar to JSON schema can be limiting. For instance, using 'enum' properties to list possible values can restrict flexibility and extensibility. This approach can be problematic in scenarios where additional capabilities or dynamic value sets are needed, such as in APIs that require frequent updates or customization.
@@ -341,7 +318,6 @@ To enhance field definitions in RESTful APIs, consider using more flexible struc
 ### Design Guideline 2: Enhancing Enum Descriptions in REST APIs
 **Source Discussion Time:** 01:18:21.540 - 01:24:15.188
 **Reference Frame:** 01:24:09.500
-<img src="keyframes/segment_13_guideline_2_01-24-09-500.png" alt="Key Frame at 01:24:09.500" width="600"/>
 
 **Problem:**
 In REST APIs, using 'enum' properties from JSON schema can be restrictive, especially when additional properties like descriptions are needed for each enum value. This results in a clunky design where descriptions are not closely tied to enum values, leading to redundancy and potential confusion. This issue is common in APIs that require detailed documentation or need to support complex data structures.
@@ -352,7 +328,6 @@ To improve the design, consider mapping enum strings to dictionaries that includ
 ### Design Guideline 3: SDK Design Considerations for Enum Handling
 **Source Discussion Time:** 01:24:17.938 - 01:27:12.375
 **Reference Frame:** 01:24:17.938
-<img src="keyframes/segment_13_guideline_3_01-24-17-938.png" alt="Key Frame at 01:24:17.938" width="600"/>
 
 **Problem:**
 The current approach to handling enums in SDKs, particularly in Python, involves creating object models over JSON schema, which can be cumbersome. This complexity arises from the need to maintain compatibility with JSON schema while providing additional functionality like descriptions. This issue is prevalent in SDKs that aim to offer strong typing and detailed documentation.
@@ -369,7 +344,6 @@ Consider adopting a Pydantic-like pattern for handling enums in SDKs, which allo
 ### Design Guideline 1: Ensure Read-Only Properties in API Responses
 **Source Discussion Time:** 01:27:45.260 - 01:30:39.312
 **Reference Frame:** 01:28:17.938
-<img src="keyframes/segment_14_guideline_1_01-28-17-938.png" alt="Key Frame at 01:28:17.938" width="600"/>
 
 **Problem:**
 APIs often need to return data that should not be modified by the client, such as timestamps or identifiers. For example, a service might return 'created_at' as part of its response, which should be read-only. Failing to enforce read-only properties can lead to data integrity issues, as clients might inadvertently or maliciously alter critical data. This problem is prevalent in scenarios where APIs expose internal state or metadata that should remain consistent across client interactions.
@@ -386,7 +360,6 @@ Design APIs to clearly specify read-only properties in their responses. Use type
 ### Design Guideline 1: Utilize Static Analysis for API Consistency
 **Source Discussion Time:** 01:30:43.060 - 01:31:59.438
 **Reference Frame:** 01:31:07.438
-<img src="keyframes/segment_15_guideline_1_01-31-07-438.png" alt="Key Frame at 01:31:07.438" width="600"/>
 
 **Problem:**
 In API design, inconsistencies can arise when properties are not uniformly enforced across different models or endpoints. For instance, an API might have varying implementations of a 'created_at' property, leading to confusion and potential errors. This inconsistency is problematic as it can degrade the developer experience and lead to maintenance challenges. Common scenarios include APIs with multiple versions or those integrating third-party services where uniformity is crucial.
@@ -403,7 +376,6 @@ Implement static analysis tools to ensure consistency across API models and endp
 ### Design Guideline 1: Refine API Information for Enhanced Copilot Integration
 **Source Discussion Time:** 01:32:00.580 - 01:33:12.875
 **Reference Frame:** 01:32:07.250
-<img src="keyframes/segment_16_guideline_1_01-32-07-250.png" alt="Key Frame at 01:32:07.250" width="600"/>
 
 **Problem:**
 When designing APIs, the information presented in API views may not align with the needs of AI tools like Copilot. For example, an API view might display comprehensive details that are not relevant for Copilot's suggestions, leading to less focused and potentially confusing results. This misalignment can hinder the effectiveness of AI-assisted development tools, impacting developer productivity and satisfaction. Common scenarios include APIs with complex inheritance structures or those requiring specific context for accurate AI suggestions.
@@ -420,7 +392,6 @@ Refine the information presented in API views to better align with AI tools like
 ### Design Guideline 1: Address Contextual Gaps in API Feedback Systems
 **Source Discussion Time:** 01:33:12.875 - 01:34:33.000
 **Reference Frame:** 01:33:21.125
-<img src="keyframes/segment_17_guideline_1_01-33-21-125.png" alt="Key Frame at 01:33:21.125" width="600"/>
 
 **Problem:**
 API feedback systems may provide suggestions that lack crucial context, leading to incorrect or misleading guidance. For instance, feedback might not account for inherited models or existing configurations, resulting in redundant or irrelevant suggestions. This can confuse developers and reduce the efficiency of API usage. Common scenarios include feedback systems that do not recognize inherited properties or configurations, causing unnecessary alerts or corrections.
@@ -437,7 +408,6 @@ Enhance API feedback systems by incorporating contextual awareness. This involve
 ### Design Guideline 1: Avoid Ambiguous String-Based Parameters
 **Source Discussion Time:** 01:34:36.562 - 01:35:53.125
 **Reference Frame:** 01:34:41.250
-<img src="keyframes/segment_18_guideline_1_01-34-41-250.png" alt="Key Frame at 01:34:41.250" width="600"/>
 
 **Problem:**
 Using string-based parameters for API methods can lead to ambiguous and error-prone code. For example, a method like 'def analyze(input: str)' does not clearly convey what type of input is expected, leading to potential misuse and runtime errors. This pattern is problematic because it lacks type safety and can confuse developers about the expected input format. Common scenarios include methods that accept file paths, URLs, or raw data as strings without clear differentiation.
@@ -454,7 +424,6 @@ Use specific types or classes to represent different kinds of input parameters i
 ### Design Guideline 1: Ensure Consistent Package Naming Across Languages
 **Source Discussion Time:** 01:41:32.188 - 01:43:30.000
 **Reference Frame:** 01:42:02.188
-<img src="keyframes/segment_19_guideline_1_01-42-02-188.png" alt="Key Frame at 01:42:02.188" width="600"/>
 
 **Problem:**
 Inconsistent package naming across different programming languages can lead to confusion and integration issues for developers. For example, if a package is named 'AzureAIContentUnderstanding' in Python but 'AzureAIContentAnalysis' in Java, developers may struggle to find the correct package or assume they are different products. This inconsistency can hinder cross-language development and complicate documentation and support efforts.
