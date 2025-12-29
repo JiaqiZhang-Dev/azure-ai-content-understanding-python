@@ -19,7 +19,7 @@ AZURE_AI_API_KEY = os.getenv("AZURE_AI_API_KEY")
 AZURE_AI_API_VERSION = os.getenv("AZURE_AI_API_VERSION", "2025-05-01-preview")
 
 # Add parent directory to path for shared modules
-parent_dir = Path(__file__).parent.parent
+parent_dir = Path(__file__).parent
 sys.path.append(str(parent_dir))
 from python.content_understanding_client import AzureContentUnderstandingClient
 from python.video_splitter import VideoSplitter

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2025-12-26T07:31:08.020820+00:00",
+    "generatedAt": "2025-12-29T05:17:06.407790+00:00",
     "inputFile": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_raw_result.json",
     "summaryFile": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md",
     "searchIndex": "azure-sdk-knowledge",
@@ -24,17 +24,17 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends adopting discriminated types for unions in OpenAPI specifications to improve type safety and clarity. This approach aligns with the Azure SDK guidelines emphasizing clear, discoverable, and maintainable API design. Although the guidelines do not explicitly mention OpenAPI union handling, the principle of providing clear type distinctions and improving developer experience is consistent with the general design principles of clarity, discoverability, and maintainability outlined in the Azure SDK guidelines.",
+      "explanation": "The extracted knowledge recommends adopting discriminated types for unions in OpenAPI specifications to improve type safety and clarity. This approach aligns with the Azure SDK guidelines emphasizing clear, discoverable, and maintainable API design. Although the official guidelines do not explicitly mention handling unions in OpenAPI, the recommended solution supports the principles of clarity and developer experience, which are core to the Azure SDK design philosophy.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Diagnosable",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         },
         {
           "id": "general_design.html",
           "title": "General Guidelines: API Design/Service API versions",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_design.html"
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
         }
       ]
     },
@@ -51,32 +51,32 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge addresses the challenge of managing a large number of APIs within a repository and recommends implementing a centralized API governance framework to ensure consistency, including standards for design, documentation, and versioning, as well as regular audits and integration tests. This aligns well with the Azure SDK guidelines emphasizing consistency within the language and across services (Guideline 4), maintaining compatibility and quality through reviews and audits (Guideline 1 and 3), and providing a cohesive, idiomatic, and approachable developer experience (Guideline 2 and 5). The recommendation supports the principle that the Azure SDK should feel like a single product developed by a single team with consistent terminology and behavior, which is central to the official guidelines.",
+      "explanation": "The extracted knowledge identifies the challenge of managing a large number of APIs within a repository, especially when ownership is fragmented, which can lead to inconsistent and fragmented API experiences. The recommended solution to implement a centralized API governance framework aligns well with the Azure SDK guidelines emphasizing consistency within the language, across services, and between target languages (Guideline 4). The governance framework's focus on standards for API design, documentation, and versioning supports the guidelines' emphasis on consistent, idiomatic, and approachable SDKs (Guidelines 2, 4, and 5). Additionally, regular audits and integration tests to maintain quality and coherence align with the compatibility and quality assurance principles outlined in the guidelines (Guidelines 1 and 3). Therefore, the extracted knowledge is consistent with and supported by the official Azure SDK design guidelines.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Consistent",
-          "url": "https://azure-sdk-guidelines/general_introduction.html"
-        },
-        {
-          "id": "general_compatibility.html",
-          "title": "General Guidelines: Compatibility/Compatibility Principles/Azure SDK Compatibility Reviews",
-          "url": "https://azure-sdk-guidelines/general_compatibility.html"
-        },
-        {
-          "id": "general_compatibility.html",
-          "title": "General Guidelines: Compatibility/Compatibility Principles/API Changes",
-          "url": "https://azure-sdk-guidelines/general_compatibility.html"
+          "url": "https://azure-sdk-guidelines/general_introduction.html#design-principles-consistent"
         },
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Idiomatic",
-          "url": "https://azure-sdk-guidelines/general_introduction.html"
+          "url": "https://azure-sdk-guidelines/general_introduction.html#design-principles-idiomatic"
         },
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Approachable",
-          "url": "https://azure-sdk-guidelines/general_introduction.html"
+          "url": "https://azure-sdk-guidelines/general_introduction.html#design-principles-approachable"
+        },
+        {
+          "id": "general_compatibility.html",
+          "title": "General Guidelines: Compatibility/Compatibility Principles/Azure SDK Compatibility Reviews",
+          "url": "https://azure-sdk-guidelines/general_compatibility.html#compatibility-principles"
+        },
+        {
+          "id": "general_compatibility.html",
+          "title": "General Guidelines: Compatibility/Compatibility Principles/API Changes",
+          "url": "https://azure-sdk-guidelines/general_compatibility.html#api-changes"
         }
       ]
     },
@@ -93,7 +93,7 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends using resource-specific endpoints when initializing API clients to ensure proper interaction with the intended resource, enhancing security and functionality. This aligns with the Azure SDK guidelines on client configuration, which emphasize allowing different clients of the same type to use different configurations and overriding global settings with client-provided options. Although the guidelines do not explicitly mention resource-specific endpoints, the principle of precise and flexible client configuration is consistent with the recommended solution. Therefore, the extracted knowledge does not conflict with the official guidelines and supports best practices for client initialization.",
+      "explanation": "The extracted knowledge recommends using resource-specific endpoints when initializing API clients to ensure correct interaction with the intended resource, improving security and functionality. This aligns with the Azure SDK guidelines on client configuration, which emphasize allowing different clients to use different configurations and overriding global settings with client-provided options. Although the guidelines do not explicitly mention resource-specific endpoints, the principle of precise and explicit client configuration is consistent with the recommended solution. Therefore, the extracted knowledge does not conflict with the official guidelines and supports best practices for client initialization.",
       "supportingGuidelines": [
         {
           "id": "general-config-for-different-clients",
@@ -120,7 +120,7 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends optimizing search registration and sorting by using explicit sorting parameters to improve performance and maintainability. This aligns with the Azure SDK design guidelines emphasizing developer productivity, discoverability, and performance. The recommendation to use clear sorting parameters such as 'sort_by=\"date_time DESC\"' supports predictable defaults and best practices, which are consistent with the guidelines on making SDKs approachable and efficient. There is no conflict with the official guidelines; rather, the extracted knowledge complements them by addressing a specific scenario of search registration and sorting.",
+      "explanation": "The extracted knowledge recommends improving API design by allowing search registration with explicit sorting parameters to optimize performance and maintainability. This aligns well with the Azure SDK guidelines emphasizing developer productivity, discoverability, and performance. The recommendation to use clear sorting parameters such as 'sort_by=\"date_time DESC\"' supports predictable defaults and clear intent, which enhances developer experience and code maintainability. There is no conflict with the official guidelines; rather, it complements the principles of designing efficient, discoverable, and maintainable APIs.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
@@ -152,22 +152,22 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends that SDKs should abstract the deserialization of complex API responses (such as JSON or XML) into structured objects, simplifying developer experience and reducing errors. This aligns well with the Azure SDK guidelines emphasizing developer productivity, ease of use, and providing abstractions that handle complex service interactions transparently. The guidelines also specify that response bodies should be fully downloaded and deserialized before being returned to the user, supporting the recommended approach of SDKs managing deserialization internally. Therefore, the extracted knowledge is consistent with the official Azure SDK design principles.",
+      "explanation": "The extracted knowledge recommends that SDKs should abstract the deserialization of complex API responses (e.g., JSON, XML) into structured objects, simplifying developer code and reducing errors. This aligns well with the Azure SDK guidelines emphasizing developer productivity, ease of use, and providing abstractions that handle complex service interactions transparently. The guidelines also specify that response bodies should be fully downloaded and deserialized before being returned to the caller, supporting the recommended approach of SDKs managing deserialization internally. Thus, the extracted knowledge is consistent with the official Azure SDK design principles and best practices.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
+          "url": "https://azure-sdk-guidelines/general_introduction.html"
         },
         {
           "id": "general_azurecore.html",
           "title": "General Guidelines: Azure Core/The HTTP pipeline/Response downloader policy",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_azurecore.html"
+          "url": "https://azure-sdk-guidelines/general_azurecore.html"
         },
         {
           "id": "general_design.html",
           "title": "General Guidelines: API Design/Response formats",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_design.html"
+          "url": "https://azure-sdk-guidelines/general_design.html"
         }
       ]
     },
@@ -184,7 +184,7 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends consolidating multiple service clients into a single client with operation groups for each service to reduce complexity and credential management overhead. This approach aligns with the Azure SDK design principles of enhancing developer productivity by simplifying client usage and reducing cognitive load. While the official guidelines do not explicitly mandate this pattern, they emphasize usability, consistent authentication handling, and streamlined client design. The recommendation to unify clients for multiple services with shared authentication is consistent with these principles and does not conflict with any stated guidelines.",
+      "explanation": "The extracted knowledge recommends consolidating multiple service clients into a single unified client with operation groups for each service to reduce complexity and credential management overhead. This approach aligns with the Azure SDK design principles of enhancing developer productivity by simplifying client usage and reducing cognitive load. While the official guidelines do not explicitly mandate this pattern, they emphasize usability, consistent authentication handling, and streamlined client design, which the recommended solution supports. The guidance is consistent with the general Azure Core principles of managing credentials and endpoints efficiently and improving the developer experience.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
@@ -211,17 +211,17 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends enhancing SDK integration by allowing SDKs to natively accept data types from popular external libraries (e.g., PyStack for geospatial data). This approach improves interoperability and reduces complexity for developers, which aligns with the Azure SDK design principles of making the SDK easy to use and reducing error-prone workarounds. Although the official guidelines do not explicitly mention integration with external libraries or native support for their data types, the recommendation does not conflict with any existing guidelines. It complements the general design principles of providing a discoverable, understandable, and efficient API experience. Furthermore, it does not violate dependency management guidelines since it suggests patching or code generation updates rather than introducing unapproved dependencies. Therefore, this extracted knowledge is compliant with the official Azure SDK design guidelines.",
+      "explanation": "The extracted knowledge recommends enhancing SDK integration by allowing SDKs to natively accept data types from popular external libraries (e.g., PyStack for geospatial data), which improves interoperability and reduces complexity for developers. This aligns with Azure SDK design principles of making the SDK easy to use and discoverable, reducing error-prone manual data handling, and improving developer experience. While the official guidelines do not explicitly mention integration with external libraries or data types, the recommendation does not conflict with any stated guidelines and supports the overall goal of providing a seamless and intuitive API. Additionally, the recommendation does not violate dependency management guidelines as it suggests patching or code generation updates rather than introducing unapproved dependencies.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Diagnosable",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         },
         {
           "id": "python_design.html",
           "title": "Python Guidelines: API Design/Azure SDK distribution packages/Dependencies",
-          "url": "https://azure.github.io/azure-sdk/guidelines/python_design.html"
+          "url": "https://azure.github.io/azure-sdk/python_design.html"
         }
       ]
     },
@@ -238,7 +238,7 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends limiting API exposure in SDKs to only those necessary for concrete scenarios, avoiding exposing sensitive or experimental APIs directly (e.g., 'getToken()'). This aligns with Azure SDK guidelines emphasizing security, maintainability, and a clean developer experience by reducing unnecessary surface area and potential misuse. The guidelines also emphasize secure credential handling and avoiding exposing authentication data directly, which supports the recommendation to encapsulate token management securely. Additionally, managing experimental APIs via feature flags or configuration is consistent with best practices for controlled exposure and versioning. There is no conflict with the official Azure SDK design guidelines.",
+      "explanation": "The extracted knowledge recommends limiting API exposure in SDKs to only those necessary for concrete scenarios, avoiding exposing sensitive or experimental APIs directly (e.g., 'getToken()'). This aligns with Azure SDK guidelines emphasizing security, maintainability, and a good developer experience by reducing unnecessary surface area and potential misuse. The guidelines also emphasize secure credential handling and avoiding exposing authentication data directly, which supports the recommendation to encapsulate token management securely. Additionally, managing experimental APIs via feature flags or configuration aligns with best practices for controlled exposure and versioning. There is no conflict with the official Azure SDK design guidelines.",
       "supportingGuidelines": [
         {
           "id": "general_auth_provide_credential_constructor",
@@ -270,17 +270,17 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "NeedsReview",
-      "explanation": "The extracted knowledge recommends advocating for the use of enums in path parameters to improve code readability and maintainability. However, the official Azure SDK guidelines do not explicitly address the use of enums in path parameters or provide direct guidance on this topic. The guidelines do emphasize consistent and idiomatic usage of enums (e.g., extensible enums with case-insensitive strings) and general API design principles, but do not specifically discuss path parameter typing. Therefore, while the recommendation aligns with the spirit of improving developer experience and code clarity, it requires further review and potential alignment with the broader API design and HTTP/REST conventions endorsed by the Azure SDK architecture board.",
+      "explanation": "The extracted knowledge recommends advocating for the use of enums in path parameters to improve readability and maintainability. However, the official Azure SDK guidelines do not explicitly address the use of enums in path parameters or provide direct guidance on this topic. The guidelines do emphasize the use of extensible enums that are case-insensitive strings for SDK models, but do not specifically mention path parameters. Therefore, while the recommendation aligns with the general principle of improving developer experience and code clarity, it is not explicitly supported or contradicted by the current official guidelines and should be reviewed further with the architecture board or API design community.",
       "supportingGuidelines": [
         {
           "id": "python_implementation.html",
           "title": "Python Guidelines: Implementation/API implementation/Supporting types",
-          "url": "https://azure-sdk-guidelines/azure-sdk-guidelines/python_implementation.html"
+          "url": "https://azure-sdk-guidelines/#python_implementation.html"
         },
         {
           "id": "python_design.html",
           "title": "Python Guidelines: API Design/Introduction/Non-HTTP based services",
-          "url": "https://azure-sdk-guidelines/azure-sdk-guidelines/python_design.html"
+          "url": "https://azure-sdk-guidelines/#python_design.html"
         }
       ]
     },
@@ -297,7 +297,7 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The recommended solution to simplify client configuration by providing a default client configuration without requiring explicit endpoint specification aligns with Azure SDK guidelines on client configuration. Specifically, it improves developer experience by reducing configuration complexity and potential errors, which is consistent with the guideline that client libraries must allow proper configuration of connectivity both globally and specifically (general_implementation.html). The approach of having a default client configuration that can be used directly (e.g., 'client = ApiClient()') is a valid pattern when the API is standardized and accessible through a common client, which does not conflict with any requirements about allowing configuration overrides or global configuration usage. Therefore, this design recommendation is compliant with the official Azure SDK design guidelines.",
+      "explanation": "The recommended solution to simplify client configuration by providing a default client configuration without requiring explicit endpoint specification aligns with the Azure SDK guidelines on client configuration. Specifically, it supports ease of configuration for consumers, reduces errors, and enhances developer experience. The guidelines emphasize proper client configuration that can be global or specific, allow different clients to have different configurations, and support overriding global settings with client-provided options. Introducing a default client configuration for standardized APIs fits well within these principles by simplifying setup and reducing manual configuration errors.",
       "supportingGuidelines": [
         {
           "id": "general-config-global-config",
@@ -305,9 +305,14 @@
           "url": "https://azure.github.io/azure-sdk/general_implementation.html#client-configuration"
         },
         {
-          "id": "general-implementation",
-          "title": "General Guidelines: Implementation/Configuration",
-          "url": "https://azure.github.io/azure-sdk/general_implementation.html"
+          "id": "general-config-for-different-clients",
+          "title": "General Guidelines: Implementation/Configuration/Client configuration",
+          "url": "https://azure.github.io/azure-sdk/general_implementation.html#client-configuration"
+        },
+        {
+          "id": "general-config-global-overrides",
+          "title": "General Guidelines: Implementation/Configuration/Client configuration",
+          "url": "https://azure.github.io/azure-sdk/general_implementation.html#client-configuration"
         }
       ]
     },
@@ -324,7 +329,7 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge emphasizes avoiding ambiguous or overly technical parameter names in APIs, recommending clear and descriptive naming conventions to improve readability and reduce errors. This aligns with the Azure SDK guidelines that promote clarity and consistency in API design and naming conventions, such as the Python naming conventions requiring snake_case for variables and functions, and the general principle of clear API design. Although the extracted knowledge is domain-specific (geospatial APIs), the recommendation to provide context in parameter names is consistent with the overall Azure SDK guidance to enhance developer experience and reduce confusion.",
+      "explanation": "The extracted knowledge recommends avoiding ambiguous or overly technical parameter names in APIs by adopting clear and descriptive naming conventions, especially for domain-specific terms. This aligns with the Azure SDK guidelines that emphasize clarity and consistency in API design and naming conventions to improve developer experience and reduce errors. Although the extracted knowledge is not explicitly cited in the official guidelines, it is consistent with the general principles of clear naming and documentation found in the Azure SDK guidelines, such as the Python naming conventions and the emphasis on clear API design.",
       "supportingGuidelines": [
         {
           "id": "python-codestyle-vars-naming",
@@ -333,8 +338,13 @@
         },
         {
           "id": "general_design.html",
-          "title": "General Guidelines: API Design",
+          "title": "General Guidelines: API Design/Service API versions",
           "url": "https://azure.github.io/azure-sdk/general_design.html"
+        },
+        {
+          "id": "python-docs-into-silence",
+          "title": "Python Guidelines: Documentation",
+          "url": "https://azure.github.io/azure-sdk/python_documentation.html"
         }
       ]
     },
@@ -351,7 +361,7 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge highlights the importance of clear and distinct parameter naming and documentation to avoid confusion in API usage, especially for parameters related to image formats. This aligns well with Azure SDK design guidelines that emphasize clear API design and comprehensive documentation to improve developer experience and reduce errors. Although the provided guidelines do not explicitly mention image format parameters, the principle of clarity and distinct purpose for parameters is consistent with the general API design and documentation best practices recommended by Azure SDK guidelines.",
+      "explanation": "The extracted knowledge highlights the importance of clear and distinct parameter naming and documentation to avoid confusion in API usage, especially for parameters related to image formats. This aligns well with the Azure SDK guidelines that emphasize clear API design and thorough documentation to improve developer experience and reduce errors. Although the extracted knowledge does not directly cite a specific guideline, it is consistent with the general principles of API clarity and documentation as outlined in the Azure SDK guidelines, particularly those related to API design and documentation best practices.",
       "supportingGuidelines": [
         {
           "id": "python-docs-style-guide",
@@ -378,17 +388,17 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends adopting contextual naming conventions for JSON schemas to clearly indicate their purpose and relation to specific API components. This aligns with the Azure SDK design principles of making APIs approachable and diagnosable by enhancing clarity and usability. Although the official guidelines do not explicitly mention JSON schema naming, the principle of clear, contextual naming supports discoverability and reduces developer confusion, which is consistent with the overall guidance on API design and documentation.",
+      "explanation": "The extracted knowledge recommends adopting contextual naming conventions for JSON schemas to clearly indicate their purpose and relation to specific API components. This aligns with the Azure SDK design principles of making APIs approachable and diagnosable by improving clarity and reducing developer confusion. Although the official guidelines do not explicitly mention JSON schema naming, the principle of clear, contextual naming supports better usability and discoverability, which is consistent with the documented design principles such as being approachable and diagnosable. Therefore, the extracted knowledge does not conflict with but rather complements the official guidelines.",
       "supportingGuidelines": [
         {
           "id": "python_design.html",
           "title": "Python Guidelines: API Design/Introduction/Design principles",
-          "url": "https://azure.github.io/azure-sdk/python_design.html"
+          "url": "https://azure.github.io/azure-sdk/python_design.html#introduction-design-principles"
         },
         {
           "id": "general_design.html",
           "title": "General Guidelines: API Design/Service API versions",
-          "url": "https://azure.github.io/azure-sdk/general_design.html"
+          "url": "https://azure.github.io/azure-sdk/general_design.html#service-api-versions"
         }
       ]
     },
@@ -405,11 +415,11 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends using pagination with continuation tokens to handle large datasets efficiently, which aligns with the official Azure SDK guidelines. The guidelines specify that operations returning collections must implement a paging protocol (e.g., ItemPaged in Python) that abstracts away the complexity of paging from the user, allowing iteration over all items seamlessly. The example in the extracted knowledge showing a transition from fetching all data at once to fetching data pages with tokens is consistent with the recommended approach of using continuation tokens and paged operations. This improves performance and user experience by enabling asynchronous data fetching and processing, which is explicitly encouraged in the official guidelines.",
+      "explanation": "The extracted knowledge recommends using pagination with continuation tokens to handle large datasets efficiently, which aligns with the official Azure SDK guidelines. Specifically, the guidelines require that operations returning collections implement transparent paging mechanisms (such as the ItemPaged protocol in Python) that allow users to iterate over all items without manually handling paging tokens. The example given in the extracted knowledge (changing from fetching all data at once to fetching data pages with tokens) is consistent with the recommended approach of providing paged operations that abstract away the complexity of continuation tokens from the user. This improves performance and user experience, as emphasized in the guidelines.",
       "supportingGuidelines": [
         {
           "id": "python-response-paged-protocol",
-          "title": "Python Guidelines: Methods returning collections (paging)",
+          "title": "Python Guidelines: API Design - Methods returning collections (paging)",
           "url": "https://azure.github.io/azure-sdk/python_design.html#methods-returning-collections-paging"
         },
         {
@@ -432,17 +442,17 @@
         "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Microsoft_Planetary_Computer_Pro_20250821_141023_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends using a specific ResourceIdentifier type for Azure resource IDs instead of plain strings. This aligns with Azure SDK design principles that emphasize type safety, improved developer experience, and encapsulation of validation logic. Although the provided official guidelines do not explicitly mention ResourceIdentifier types, the recommendation is consistent with the general Azure SDK design goals of improving API usability and reducing errors by using appropriate types rather than raw strings. Therefore, the extracted knowledge does not conflict with the official guidelines and is considered compliant.",
+      "explanation": "The extracted knowledge recommends using a specific ResourceIdentifier type instead of plain strings for Azure resource IDs to improve type safety, validation, and developer experience. This aligns with Azure SDK design principles that emphasize strong typing, validation, and improving developer experience by encapsulating complex identifiers in dedicated types. Although the provided official guidelines do not explicitly mention ResourceIdentifier types, the recommendation is consistent with the general Azure SDK guidelines that promote robust API design and better developer usability.",
       "supportingGuidelines": [
         {
           "id": "general_implementation.html",
           "title": "General Guidelines: Implementation/Error handling",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_implementation.html"
+          "url": "https://azure.github.io/azure-sdk/general_implementation.html"
         },
         {
           "id": "general_design.html",
           "title": "General Guidelines: API Design",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_design.html"
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
         }
       ]
     }

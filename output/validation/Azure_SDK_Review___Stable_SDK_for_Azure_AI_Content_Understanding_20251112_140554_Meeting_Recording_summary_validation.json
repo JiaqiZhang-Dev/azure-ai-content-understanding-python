@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2025-12-26T07:33:07.963495+00:00",
+    "generatedAt": "2025-12-29T05:19:38.357394+00:00",
     "inputFile": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_raw_result.json",
     "summaryFile": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md",
     "searchIndex": "azure-sdk-knowledge",
@@ -24,22 +24,17 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends designing APIs to accept arrays or collections of inputs rather than a single input to enhance flexibility, scalability, and future-proofing. This aligns with Azure SDK design principles that emphasize approachable, dependable, and flexible API design. Although the extracted knowledge does not explicitly reference pagination or iterator patterns, the recommendation to accept multiple inputs is consistent with the general guideline of designing APIs that handle collections effectively. There is no conflict with the official guidelines, which focus on usability, scalability, and maintainability of client libraries.",
+      "explanation": "The extracted knowledge recommends designing APIs to accept collections or arrays of inputs rather than single inputs to enhance flexibility, scalability, and future-proofing. This aligns with Azure SDK design principles that emphasize approachable, dependable, and scalable API designs. Although the extracted knowledge does not explicitly reference pagination or iterator patterns, the recommendation to accept multiple inputs is consistent with the general guidance to design APIs that handle diverse input types and evolving requirements. There is no conflict with the official guidelines, which focus on usability, consistency, and extensibility of client libraries.",
       "supportingGuidelines": [
         {
           "id": "python_design.html",
-          "title": "Python Guidelines: API Design/Azure SDK API Design/Supporting types",
-          "url": "https://azure.github.io/azure-sdk/python_design.html"
+          "title": "Python Guidelines: API Design/Introduction/Design principles",
+          "url": "https://azure.github.io/azure-sdk/python_design.html#introduction-design-principles"
         },
         {
           "id": "general_design.html",
           "title": "General Guidelines: API Design/Pagination",
           "url": "https://azure.github.io/azure-sdk/general_design.html#pagination"
-        },
-        {
-          "id": "python_design.html",
-          "title": "Python Guidelines: API Design/Introduction/Design principles",
-          "url": "https://azure.github.io/azure-sdk/python_design.html#introduction-design-principles"
         }
       ]
     },
@@ -56,7 +51,7 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends enhancing the API to support advanced layout analysis features such as extracting table structures, row counts, and cell positions. This aligns with the Azure SDK guideline that the client library must support 100% of the features provided by the Azure service it represents, avoiding gaps in functionality that cause developer confusion and frustration. Providing detailed layout information improves developer experience and accuracy in document processing, which is consistent with the guideline to fully support service features. There is no conflict with other guidelines regarding authentication, environment variables, or documentation. The recommendation also implicitly supports good API design by exposing richer functionality rather than limiting to basic content extraction.",
+      "explanation": "The extracted knowledge recommends enhancing API functionality to include advanced layout analysis features such as extracting table structures, row counts, and cell positions. This aligns with the Azure SDK guideline that the client library must support 100% of the features provided by the Azure service it represents (Guideline 1). Providing detailed layout information improves developer experience and accuracy, which is consistent with the principle of delivering comprehensive and useful API surfaces. There is no conflict with other guidelines, and the recommendation supports the goal of a rich, fully featured API.",
       "supportingGuidelines": [
         {
           "id": "python-feature-support",
@@ -78,32 +73,27 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends enhancing API design for invoice extraction by providing structured access to complex field types such as arrays and nested fields. This approach aligns with Azure SDK guidelines that emphasize clear, structured, and usable API designs. Although the guidelines do not explicitly mention invoice extraction, the recommended solution improves data accuracy and usability, which is consistent with the general principles of robust API design. There is no conflict with the referenced guidelines, which focus on Python implementation, authentication, pagination, and general API design principles.",
+      "explanation": "The extracted knowledge recommends enhancing API design for invoice extraction by supporting diverse and complex data types such as arrays and nested fields, which aligns with Azure SDK guidelines emphasizing clear, structured, and usable API surfaces. The example shows moving from a generic field extraction to a structured dictionary with explicit keys, improving data accuracy and usability. Although the provided guidelines do not explicitly mention invoice extraction, the general principles of API design, including clear method naming and structured data return types, are followed. There is no conflict with the official guidelines, and the approach improves client usability and clarity.",
       "supportingGuidelines": [
         {
           "id": "python_design.html",
           "title": "Python Guidelines: API Design/Introduction/Non-HTTP based services",
-          "url": "https://azuresdkguidelines.blob.core.windows.net/knowledge/azure-sdk-guidelines/python_design.html"
+          "url": "https://azure.github.io/azure-sdk/python_design.html"
         },
         {
           "id": "python_implementation.html",
           "title": "Python Guidelines: Implementation/API implementation/Service client",
-          "url": "https://azuresdkguidelines.blob.core.windows.net/knowledge/azure-sdk-guidelines/python_implementation.html"
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html"
         },
         {
           "id": "general_design.html",
           "title": "General Guidelines: API Design/Authentication",
-          "url": "https://azuresdkguidelines.blob.core.windows.net/knowledge/azure-sdk-guidelines/general_design.html"
-        },
-        {
-          "id": "python_implementation.html",
-          "title": "Python Guidelines: Implementation/Python language and code style/Types (or not)",
-          "url": "https://azuresdkguidelines.blob.core.windows.net/knowledge/azure-sdk-guidelines/python_implementation.html"
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
         },
         {
           "id": "general_design.html",
           "title": "General Guidelines: API Design/Pagination",
-          "url": "https://azuresdkguidelines.blob.core.windows.net/knowledge/azure-sdk-guidelines/general_design.html"
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
         }
       ]
     },
@@ -120,22 +110,22 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends providing a flexible API framework for custom analyzer creation that allows developers to define schemas and configure models easily. This aligns with Azure SDK guidelines emphasizing idiomatic design, developer control, and clarity in method signatures. The example method signature 'create_custom_analyzer(config, schema)' improves clarity and developer control, consistent with Python guidelines on method signatures and parameter naming. The approach supports progressive disclosure and ease of use, which matches the guidelines on making SDKs approachable and idiomatic.",
+      "explanation": "The extracted knowledge recommends providing a flexible API framework for custom analyzer creation that allows developers to define schemas and configure models easily. This aligns with Azure SDK guidelines emphasizing idiomatic design, developer control, and ease of use. The example method signature change from create_analyzer(config) to create_custom_analyzer(config, schema) improves clarity and developer control, consistent with Python guidelines on method signatures and parameter naming. The approach supports progressive disclosure and predictable defaults by enabling detailed schema definitions, which helps developers achieve accurate content extraction. There is no conflict with any official Azure SDK design guidelines.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Idiomatic",
-          "url": "https://azure-sdk-guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         },
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Approachable",
-          "url": "https://azure-sdk-guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         },
         {
           "id": "python_implementation.html",
           "title": "Python Guidelines: Implementation/Python language and code style/Method signatures",
-          "url": "https://azure-sdk-guidelines/python_implementation.html"
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html"
         }
       ]
     },
@@ -152,7 +142,7 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends an API design for keyframe extraction that improves accuracy and efficiency by requiring an operation_id parameter and returning a KeyframeExtractor object. This aligns with Azure SDK guidelines emphasizing clear method signatures, explicit parameters, and robust API design to handle complex operations. The example method signature uses snake_case and explicit parameters, consistent with Python naming conventions and parameter usage guidelines. While the extracted knowledge does not explicitly mention documentation, it implies a clear API contract which supports the documentation guidelines. Overall, the design approach supports performance, reliability, and clarity, consistent with Azure SDK design principles.",
+      "explanation": "The extracted knowledge recommends implementing a robust API method for keyframe extraction that supports operation ID retrieval and efficient data chunking, which aligns with Azure SDK guidelines emphasizing clear method signatures and efficient data handling. The example method signature 'extract_keyframe(video, operation_id)' uses positional parameters appropriately, consistent with guidelines that require specifying parameter names when there are more than two required positional parameters. The approach improves performance and reliability, which is a key goal of Azure SDK design. There is no conflict with naming conventions, parameter usage, or documentation requirements based on the provided information.",
       "supportingGuidelines": [
         {
           "id": "python-codestyle-positional-params",
@@ -160,18 +150,13 @@
           "url": "https://azure.github.io/azure-sdk/python_implementation.html#python-codestyle-positional-params"
         },
         {
-          "id": "python-codestyle-vars-naming",
-          "title": "Use snake_case for variable, function, and method names",
-          "url": "https://azure.github.io/azure-sdk/python_implementation.html#python-codestyle-vars-naming"
-        },
-        {
-          "id": "python-docs-into-silence",
-          "title": "Document your library into silence",
-          "url": "https://azure.github.io/azure-sdk/python_documentation.html#python-docs-into-silence"
+          "id": "python-codestyle-optional-param-calling",
+          "title": "Specify the parameter name for optional parameters when calling functions",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html#python-codestyle-optional-param-calling"
         },
         {
           "id": "python_design.html",
-          "title": "Azure SDK API Design - Supporting types and method signatures",
+          "title": "Azure SDK API Design/Supporting types",
           "url": "https://azure.github.io/azure-sdk/python_design.html"
         }
       ]
@@ -189,12 +174,17 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends simplifying client operations by promoting operations to the client level to reduce complexity and improve usability. This aligns with the Azure SDK design principles of creating intuitive and easy-to-use client libraries that enhance developer experience. Although the provided official guidelines do not explicitly mention this exact pattern, the recommendation to reduce unnecessary complexity and improve usability is consistent with the general design goals of the Azure SDK guidelines. No conflicts or violations are identified.",
+      "explanation": "The extracted knowledge recommends simplifying client operations by promoting operations to the client level to reduce complexity and improve usability. This aligns with the Azure SDK design guidelines' general principle of improving developer experience and reducing friction in SDK usage. Although the provided official guidelines do not explicitly mention this exact pattern, the recommendation to simplify the SDK interface and make common operations more accessible is consistent with the overall goals of the Azure SDK guidelines, which emphasize usability and clear API design. There is no conflict with the referenced guidelines.",
       "supportingGuidelines": [
         {
           "id": "general_design.html",
           "title": "General Guidelines: API Design/Model types",
           "url": "https://azure.github.io/azure-sdk/general_design.html"
+        },
+        {
+          "id": "general_documentation.html",
+          "title": "General Guidelines: Documentation/Code snippets",
+          "url": "https://azure.github.io/azure-sdk/general_documentation.html"
         }
       ]
     },
@@ -211,12 +201,12 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge emphasizes defining and documenting consistent default values for all API methods to ensure predictable behavior and avoid confusion. This aligns with the official Azure SDK guidelines which state that defaults should be discoverable and their intent clear, enhancing developer understanding and trust. There is no conflict with the official guidelines; rather, the extracted knowledge reinforces the principle of clear and consistent defaults in API design.",
+      "explanation": "The extracted knowledge emphasizes defining and documenting consistent default values for all API methods to ensure predictable behavior and avoid confusion. This aligns with the official Azure SDK guidelines which state that defaults should be discoverable and their intent clear, enhancing developer understanding and trust. The recommendation to replace ambiguous 'unset' defaults with clearly defined default values supports the guideline principle that developers should understand what is going on and that defaults are explicit and documented.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Diagnosable",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         }
       ]
     },
@@ -233,17 +223,12 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends promoting key methods such as 'analyzeAsync' to the top-level API to improve discoverability and usability. This aligns with the Azure SDK guidelines that emphasize making core use cases discoverable and placing service client types and key methods in the root namespace for easier access by developers. The guidelines also stress the importance of approachable APIs with predictable defaults and progressive concept disclosure, which is supported by promoting essential methods to the top level. Therefore, the recommendation is consistent with the official Azure SDK design principles.",
+      "explanation": "The extracted knowledge recommends promoting key methods such as 'analyzeAsync' to the top-level API to improve discoverability and reduce the learning curve for developers. This aligns well with the official Azure SDK guidelines emphasizing that core use cases should be discoverable and that service clients and their primary methods should be exposed from the root namespace to enhance accessibility and usability. The guidelines also stress the importance of approachable APIs and progressive concept disclosure, which is supported by making essential methods easily accessible at the top level.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Approachable",
           "url": "https://azure.github.io/azure-sdk/general_introduction.html"
-        },
-        {
-          "id": "python_design.html",
-          "title": "Python Guidelines: API Design/Introduction/Design principles",
-          "url": "https://azure.github.io/azure-sdk/python_design.html"
         },
         {
           "id": "python_design.html",
@@ -270,22 +255,22 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends maintaining separate methods for binary and array inputs (e.g., 'analyzeBinaryAsync' and 'analyzeAsync') to align with REST API operations and improve method discoverability. This approach supports clarity and consistency in the API design, which aligns with the Azure SDK guidelines emphasizing clear, intuitive API surfaces that fully support service features and maintain consistency with REST APIs. Although the official guidelines do not explicitly mandate separate methods for different input types, the recommended solution is consistent with the principles of clear method naming, discoverability, and alignment with REST API operations, which are core to Azure SDK design principles.",
+      "explanation": "The extracted knowledge recommends maintaining separate methods for binary and array inputs (e.g., 'analyzeAsync' for array inputs and 'analyzeBinaryAsync' for binary inputs) to align with REST API operations and improve method discoverability. This approach is consistent with Azure SDK guidelines emphasizing consistency with REST API documentation and clear, intuitive API design. Although the official guidelines do not explicitly prescribe this exact pattern, the recommendation aligns with the principles of clear method naming, consistency with service features, and avoiding confusion among developers. Therefore, the extracted knowledge does not conflict with the official Azure SDK design guidelines.",
       "supportingGuidelines": [
         {
           "id": "python-feature-support",
-          "title": "Python Guidelines: API Design - Feature Support",
-          "url": "https://azure.github.io/azure-sdk/python_design.html#feature-support"
+          "title": "Python Guidelines: API Design/Introduction/General guidelines",
+          "url": "https://azure.github.io/azure-sdk/python_design.html#python-feature-support"
         },
         {
-          "id": "python-design-intro",
-          "title": "Python Guidelines: API Design/Introduction",
-          "url": "https://azure.github.io/azure-sdk/python_design.html#introduction"
+          "id": "python-design",
+          "title": "Python Guidelines: API Design/Introduction/Non-HTTP based services",
+          "url": "https://azure.github.io/azure-sdk/python_design.html"
         },
         {
           "id": "general-compatibility",
-          "title": "General Guidelines: Compatibility Principles/API Changes",
-          "url": "https://azure.github.io/azure-sdk/general_compatibility.html#api-changes"
+          "title": "General Guidelines: Compatibility/Compatibility Principles/API Changes",
+          "url": "https://azure.github.io/azure-sdk/general_compatibility.html"
         }
       ]
     },
@@ -302,7 +287,7 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge addresses a specific API design challenge related to cross-API string encoding issues, which is not explicitly covered in the provided official Azure SDK guidelines. The recommended solution to allow users to specify the string encoding explicitly (e.g., via an encoding parameter) aligns well with the general Azure SDK design principles of clarity, discoverability, and consistency within a language. This approach helps prevent errors and data corruption, improving diagnosability and usability, which is consistent with the guidelines emphasizing clear, actionable, and human-readable behavior. There is no conflict with the official guidelines, and the solution enhances the SDK's robustness in multilingual and cross-language scenarios.",
+      "explanation": "The extracted knowledge addresses a specific API design challenge related to handling string encoding across different programming languages, which is a nuanced aspect of API design. The recommended solution to allow users to specify the string encoding explicitly aligns with the Azure SDK guidelines' emphasis on clarity, discoverability, and consistency. By enabling users to specify encoding (e.g., UTF-16), the API becomes more diagnosable and reduces the risk of errors and data corruption, which supports the guideline principles of making defaults and behaviors clear and understandable. Although the extracted knowledge does not directly map to a single guideline, it complements the general principles of consistent, clear, and diagnosable API design as outlined in the guidelines, particularly those emphasizing discoverability and clarity in API behavior. There is no conflict with any official guideline, and the approach enhances cross-language consistency, which is a key design goal.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
@@ -329,22 +314,17 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends selecting string encoding that aligns with the natural encoding of the SDK being used (e.g., UTF-8 for web applications and UTF-16 for Windows applications) and documenting the choice and rationale. This approach aligns with the Azure SDK guidelines emphasizing idiomatic design that feels natural to the target language and platform, clear and discoverable defaults, and good documentation to aid developer understanding. Although the official guidelines do not explicitly mention string encoding choices, the principle of making SDKs approachable, diagnosable, and idiomatic supports the recommendation to choose appropriate encoding and document it clearly to avoid data corruption and developer confusion.",
+      "explanation": "The extracted knowledge emphasizes selecting string encoding appropriate to the target platform (e.g., UTF-8 for web, UTF-16 for Windows) and documenting the choice and rationale. This aligns with the Azure SDK guidelines that stress idiomatic design for the target language and platform, ensuring natural and consistent developer experience. While the official guidelines do not explicitly mention string encoding, the principle of making SDKs feel natural and consistent with the target ecosystem (Guideline 2) supports choosing appropriate encoding. Additionally, documenting choices aids discoverability and clarity (Guideline 3). Therefore, the extracted knowledge is consistent with and complementary to the official Azure SDK design guidelines.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Idiomatic",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         },
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Diagnosable",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
-        },
-        {
-          "id": "general_introduction.html",
-          "title": "General Guidelines: Introduction/Design principles/Approachable",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         }
       ]
     },
@@ -361,17 +341,17 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge emphasizes aligning SDK API naming conventions with RESTful API conventions to avoid confusion and inconsistencies, which is consistent with the Azure SDK guidelines that stress following general design principles and idiomatic usage for the target language and ecosystem. The guidelines encourage uniformity and consistency across platforms and languages, which aligns with the recommendation to adopt RESTful naming conventions. There is no conflict with the official guidelines; rather, the extracted knowledge complements them by focusing on naming consistency and reducing developer confusion.",
+      "explanation": "The extracted knowledge emphasizes aligning SDK API naming conventions with RESTful API naming conventions to ensure consistency and reduce confusion. This aligns with the Azure SDK guidelines that stress the importance of following general design guidelines and conventions for the target language and adopting widely accepted standards to improve developer experience. Although the extracted knowledge specifically calls out avoiding 'in' in naming units to prevent conflicts, this is consistent with the principle of maintaining idiomatic and consistent naming across platforms and languages as described in the official guidelines. There is no conflict detected between the extracted knowledge and the official Azure SDK design guidelines.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Idiomatic",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html#design-principles-idiomatic"
         },
         {
           "id": "python_design.html",
           "title": "Python Guidelines: API Design/Introduction/General guidelines",
-          "url": "https://azure.github.io/azure-sdk/guidelines/python_design.html"
+          "url": "https://azure.github.io/azure-sdk/python_design.html#api-design-introduction-general-guidelines"
         }
       ]
     },
@@ -388,7 +368,7 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "NeedsReview",
-      "explanation": "The extracted knowledge recommends using plain strings instead of extensible enums for fields requiring flexibility and extensibility, citing complexity and maintenance overhead as reasons. However, the official Azure SDK guidelines, particularly for Python, recommend using extensible enumerations (extensible enums) implemented as string enums with case-insensitive matching (using CaseInsensitiveEnumMeta). This approach balances type safety and extensibility, improving developer experience. The extracted knowledge's recommendation to avoid extensible enums conflicts with the official guidance that encourages their use for extensibility and type safety. Therefore, this discrepancy requires further review to reconcile the two perspectives or clarify the contexts in which each approach is preferred.",
+      "explanation": "The extracted knowledge recommends using plain strings instead of extensible enums for fields requiring flexibility and extensibility, citing complexity, maintenance overhead, and developer experience concerns. However, the official Azure SDK guidelines, particularly for Python, recommend using extensible enumerations (extensible enums) implemented as string enums with case-insensitive matching (e.g., using CaseInsensitiveEnumMeta). This approach balances type safety and extensibility. The extracted knowledge's recommendation to avoid extensible enums conflicts with the official guidance that encourages their use to improve developer experience and maintainability. Therefore, the extracted knowledge partially conflicts with the official guidelines and requires further review to reconcile these differences or clarify context-specific applicability.",
       "supportingGuidelines": [
         {
           "id": "python-models-enum-string",
@@ -415,7 +395,7 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge emphasizes the importance of consistent REST API naming conventions, specifically recommending appending units to the end of field names without additional words (e.g., 'lengthMeters' instead of 'lengthInMeters'). This aligns well with the official Azure SDK guidelines that stress consistency within the language and across services, as well as the importance of predictable, idiomatic design that reduces cognitive load for developers. The guidelines highlight that client libraries should be consistent within the language and service, and that consistency aids in diagnosability and developer experience. The extracted knowledge's focus on naming consistency supports these principles and does not conflict with any official guidance.",
+      "explanation": "The extracted knowledge emphasizes the importance of consistent REST API naming conventions, specifically recommending appending units directly to field names (e.g., lengthMeters instead of lengthInMeters) to reduce cognitive load and improve developer experience. This aligns well with the official Azure SDK guidelines that stress consistency within the language and across client libraries (Guideline 5), adherence to idiomatic design principles (Guideline 2), and providing an approachable and predictable API surface (Guideline 4). The recommendation to document naming conventions and provide examples also supports the goal of making the SDK easy to use and understand. There is no conflict with the official guidelines; rather, the extracted knowledge complements and reinforces them.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
@@ -426,6 +406,11 @@
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Idiomatic",
           "url": "https://azure.github.io/azure-sdk/general_introduction.html#design-principles-idiomatic"
+        },
+        {
+          "id": "general_introduction.html",
+          "title": "General Guidelines: Introduction/Design principles/Approachable",
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html#design-principles-approachable"
         }
       ]
     },
@@ -442,7 +427,7 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends using specific types such as a dedicated ResourceIdentifier class for resource identifiers instead of generic types like strings. This approach aligns with Azure SDK design principles that emphasize clarity, type safety, and improved developer experience. Although the provided official guidelines do not explicitly mention resource identifier types, the recommendation to use specific types for resource identifiers is consistent with the general Azure SDK guidelines that promote clear and robust API design. There is no conflict with the official guidelines.",
+      "explanation": "The extracted knowledge recommends using specific types such as a dedicated ResourceIdentifier class for resource identifiers instead of generic types like strings. This approach aligns with Azure SDK design principles that emphasize clarity, type safety, and improving developer experience. Although the provided official guidelines do not explicitly mention resource identifier types, the recommendation to use specific types for resource identifiers is consistent with the general Azure SDK guidelines that promote clear API contracts and type safety. There is no conflict with the official guidelines, and the recommendation enhances API usability and reduces errors.",
       "supportingGuidelines": [
         {
           "id": "general_design.html",
@@ -474,17 +459,22 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends defining specific types or classes to represent geometric shapes in APIs, such as 'Polygon' or 'Rectangle', to improve clarity and type safety. This aligns with the Azure SDK guidelines that emphasize clear, understandable data structures and good API design practices. Although the provided guidelines do not explicitly mention geometric shapes, the principle of using specific types for better developer experience and maintainability is consistent with the general Azure SDK design principles. The recommendation to use wrapper classes to encapsulate complex types also aligns with best practices for maintainability and reducing errors.",
+      "explanation": "The extracted knowledge recommends defining specific types or classes to represent geometric shapes in APIs, such as 'Polygon' or 'Rectangle', to improve clarity and type safety. This aligns with the Azure SDK guidelines that emphasize clear, understandable data structures and good API design practices. Although the provided guidelines do not explicitly mention geometric shapes, the principle of using specific types for better developer experience and maintainability is consistent with the general Azure SDK design philosophy. The guidelines also emphasize providing type hints and implementing model types properly, which supports the use of well-defined classes for complex types.",
       "supportingGuidelines": [
         {
-          "id": "general_introduction.html",
-          "title": "General Guidelines: Introduction",
-          "url": "https://azure-sdk-guidelines/core/general_introduction.html"
+          "id": "python_implementation.html",
+          "title": "Python Guidelines: Implementation/Python language and code style/Types (or not)",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html"
         },
         {
           "id": "python_implementation.html",
-          "title": "Python Guidelines: Implementation/Supporting types",
-          "url": "https://azure-sdk-guidelines/core/python_implementation.html"
+          "title": "Python Guidelines: Implementation/API implementation/Supporting types",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html"
+        },
+        {
+          "id": "general_introduction.html",
+          "title": "General Guidelines: Introduction",
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         }
       ]
     },
@@ -501,12 +491,12 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge recommends adopting clear and consistent naming conventions for location parameters in APIs, such as using 'data_zone' instead of ambiguous terms like 'region' or 'geography'. This aligns with the Azure SDK guideline that the developer should be able to understand what is going on and that defaults and their intent should be clear and discoverable (Guideline 1). The recommendation to provide default options like 'global' for flexibility also supports clarity and usability. There is no conflict with any official guidelines, and the approach improves developer experience by reducing ambiguity and potential misconfiguration.",
+      "explanation": "The extracted knowledge recommends adopting clear and consistent naming conventions for location parameters in APIs, such as using 'data_zone' instead of ambiguous terms like 'region' or 'geography'. This aligns with the Azure SDK guideline that the developer should be able to understand what is going on and that defaults and their intent should be clear and discoverable (Guideline 1). The recommendation improves clarity and developer experience, which is consistent with the general principles of good API design in the Azure SDK guidelines. There is no conflict with any official guideline, and the suggestion enhances clarity and usability.",
       "supportingGuidelines": [
         {
           "id": "general_introduction.html",
           "title": "General Guidelines: Introduction/Design principles/Diagnosable",
-          "url": "https://azure.github.io/azure-sdk/guidelines/general_introduction.html"
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
         }
       ]
     },
@@ -523,7 +513,7 @@
         "summary_path": "output\\Azure_SDK_Review___Stable_SDK_for_Azure_AI_Content_Understanding_20251112_140554_Meeting_Recording_summary.md"
       },
       "complianceStatus": "Compliant",
-      "explanation": "The extracted knowledge advises careful evaluation before integrating shared concepts into a core API to avoid unnecessary complexity and maintenance overhead. This aligns with the Azure SDK guidelines which emphasize that the Azure Core library should provide common cross-cutting services only when justified, and client libraries should configure these policies rather than duplicating core functionality. The recommendation to place resource creation in separate modules if core integration is not justified supports modularity and maintainability, consistent with the guidelines.",
+      "explanation": "The extracted knowledge advises careful evaluation before integrating shared concepts into a core API to avoid unnecessary complexity and maintenance overhead. This aligns with the Azure SDK guidelines that emphasize the Azure Core library should provide common, cross-cutting services only when justified, and client libraries should configure policies rather than embed unrelated functionality into the core. The recommendation to place resource creation in a separate module if core integration is not justified supports modularity and maintainability, consistent with the official guidance.",
       "supportingGuidelines": [
         {
           "id": "general_azurecore.html",
