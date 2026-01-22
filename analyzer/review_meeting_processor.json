@@ -1,0 +1,76 @@
+{
+  "description": "API/SDK Design Guidelines Extractor - Analyzes technical review meetings to extract reusable API design principles, best practices, and anti-patterns that can be used by LLMs and developers for automated API review or to build better SDKs",
+  "baseAnalyzerId": "prebuilt-videoAnalyzer",
+  "config": {
+    "returnDetails": true,
+    "segmentationMode": "custom",
+    "segmentationDefinition": "Segment the meeting into major stages. Do NOT segment by individual topics or issues - group all related API discussions into one large segment.",
+    "locales": [
+      "en-US"
+    ]
+  },
+  "fieldSchema": {
+    "name": "Content Understanding - API/SDK Design Guidelines Extractor",
+    "fields": {
+      "Segments": {
+        "type": "array",
+        "description": "Major segments of the review meeting organized by topic or screen content changes.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "SegmentId": {
+              "type": "string",
+              "description": "Unique identifier for this segment, use format like 'segment_1', 'segment_2', etc."
+            },
+            "SegmentTopic": {
+              "type": "string",
+              "method": "generate",
+              "description": "High-level meeting stage or agenda item title. Think of this as a chapter in the meeting agenda. Examples: 'Meeting Opening and API Overview', 'Core API Design Review', 'Type System and Schema Discussion', 'Architecture Decisions and Wrap-up'. IMPORTANT: Each segment must have a UNIQUE topic title - do not repeat the same topic for multiple segments."
+            },
+            "Knowledges": {
+              "type": "array",
+              "description": "Reusable API/SDK design guidelines and best practices extracted from this segment. Each knowledge item should be a GENERALIZABLE design principle that can be applied to other API/SDK projects, not just documentation of what happened in this specific meeting. Extract the underlying design wisdom and patterns that developers and LLMs can use to review or create better APIs.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "StartTimestamp": {
+                    "type": "string",
+                    "description": "Start timestamp of this Knowledge in format HH:MM:SS.mmm"
+                  },
+                  "EndTimestamp": {
+                    "type": "string",
+                    "description": "End timestamp of this Knowledge in format HH:MM:SS.mmm"
+                  },
+                  "KeyFrameTimestamp": {
+                    "type": "string",
+                    "description": "The most representative key frame timestamp (in format HH:MM:SS.mmm) from the available key frames that best illustrates this Knowledge, such as a frame showing relevant code, API signature, or screen content being discussed."
+                  },
+                  "Category": {
+                    "type": "string",
+                    "method": "generate",
+                    "description": "Categorize this knowledge item to determine if it contains reusable API/SDK design guidelines. Use EXACTLY one of these values: 'API_DESIGN_GUIDELINE' (reusable design principle, best practice, or anti-pattern that can be applied to other API/SDK projects), 'MEETING_CONTEXT' (meeting logistics, introductions, demo walkthrough, hero scenarios showcase, or project-specific discussions without generalizable design insights). ONLY mark as API_DESIGN_GUIDELINE if the content provides a clear design principle or pattern that developers can apply to their own APIs."
+                  },
+                  "Title": {
+                    "type": "string",
+                    "method": "generate",
+                    "description": "Concise title for the API/SDK design problem (5-10 words). Examples: 'Avoid Ambiguous String-Based Parameters'."
+                  },
+                  "Problem": {
+                    "type": "string",
+                    "method": "generate",
+                    "description": "API/SDK design problem, anti-pattern, or issue identified in the discussion. MINIMUM 30 WORDS. Frame as a GENERALIZABLE problem that applies to many APIs, not just this specific meeting. Format: (1) Describe the problematic pattern with generic WRONG code example, (2) Explain why this is problematic (poor developer experience, type safety issues, maintainability problems), (3) Common scenarios where this problem occurs. Use generic placeholders like 'class ApiClient' or 'def process_data()' instead of meeting-specific names. Focus on the PROBLEM, not the solution."
+                  },
+                  "RecommendedSolution": {
+                    "type": "string",
+                    "method": "generate",
+                    "description": "Recommended solution pattern and best practice. MINIMUM 30 WORDS. Frame as GENERAL guidance applicable to any API/SDK project. Format: (1) State the recommended approach/pattern with a clear principle (e.g., 'Preserve Type Information with Helper Methods'), (2) Provide generic BEFORE/AFTER code examples showing the improvement, (3) Explain the rationale and benefits (improved developer experience, better type safety, etc.), (4) List alternative approaches if any, (5) When to apply this pattern. This should read like an API design best practices guide that can be used to review other APIs."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

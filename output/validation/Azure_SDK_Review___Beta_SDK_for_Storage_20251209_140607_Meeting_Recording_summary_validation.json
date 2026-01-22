@@ -1,0 +1,351 @@
+{
+  "metadata": {
+    "generatedAt": "2025-12-29T05:18:03.185567+00:00",
+    "inputFile": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_raw_result.json",
+    "summaryFile": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md",
+    "searchIndex": "azure-sdk-knowledge",
+    "totalFindings": 11,
+    "statusCounts": {
+      "Compliant": 11
+    }
+  },
+  "items": [
+    {
+      "knowledge": {
+        "segment_id": "2",
+        "segment_topic": "API View Review and Concurrency Discussion",
+        "title": "Review API Views Across Languages",
+        "problem": "API views across different programming languages like .NET, Python, and Java can lead to inconsistencies and confusion for developers. For example, an API method in .NET might have different parameters or return types compared to its Python counterpart, causing integration issues and increasing the learning curve for developers who work across multiple languages. This problem is common in multi-language SDKs where maintaining consistency is challenging.",
+        "recommended_solution": "Ensure consistent API views across different languages by establishing a unified design guideline. For example, define a common interface or method signature that all language implementations must adhere to. BEFORE: .NET method `public void ProcessData(string input)` vs. Python method `def process_data(data: dict)`. AFTER: Both methods use `string` as input. This improves developer experience by reducing confusion and ensuring seamless integration across languages.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:01:32.000",
+        "end_timestamp": "00:02:39.688",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge emphasizes the importance of consistent API views across different programming languages in multi-language SDKs, which aligns well with the official Azure SDK guidelines. Specifically, the Python design guidelines highlight consistency between client libraries across languages as a key principle, stating that client libraries should be consistent within the language, with the service, and between all target languages. The recommended solution to unify method signatures and parameter types across languages to reduce confusion and improve developer experience is directly supported by these guidelines. There is no conflict with the official guidance; rather, the extracted knowledge reinforces the need for cross-language consistency as a best practice.",
+      "supportingGuidelines": [
+        {
+          "id": "python_design.html",
+          "title": "Python Guidelines: API Design/Introduction/Design principles",
+          "url": "https://azure.github.io/azure-sdk/python_design.html"
+        },
+        {
+          "id": "general_compatibility.html",
+          "title": "General Guidelines: Compatibility/Compatibility Principles/API Changes",
+          "url": "https://azure.github.io/azure-sdk/general_compatibility.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "3",
+        "segment_topic": "Python API Review and Dynamic User Delegation",
+        "title": "Dynamic User Delegation in SaaS Features",
+        "problem": "Dynamic user delegation in SaaS features can lead to security and management challenges. For instance, allowing users to delegate access dynamically without proper validation can result in unauthorized access and data breaches. This issue is prevalent in SaaS applications where user roles and permissions are frequently updated.",
+        "recommended_solution": "Implement strict validation and auditing mechanisms for dynamic user delegation in SaaS applications. BEFORE: Users can delegate access without checks. AFTER: Delegation requests are validated against predefined rules and logged for auditing. This enhances security by ensuring only authorized delegations occur and provides a trail for accountability.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:02:41.400",
+        "end_timestamp": "00:03:41.438",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge highlights the importance of implementing strict validation and auditing mechanisms for dynamic user delegation in SaaS features to prevent unauthorized access and data breaches. This aligns with the Azure SDK guidelines emphasizing dependable design principles, security, and proper authentication mechanisms. Although the extracted knowledge focuses on SaaS user delegation rather than SDK API design directly, the recommended solution to validate delegation requests and maintain audit trails is consistent with the Azure SDK's emphasis on secure authentication and authorization practices (e.g., OAuth token authentication, credential validation). There is no conflict with the official guidelines; rather, the extracted knowledge complements them by addressing security concerns in user delegation scenarios.",
+      "supportingGuidelines": [
+        {
+          "id": "general_introduction.html",
+          "title": "General Guidelines: Introduction/Design principles/Dependable",
+          "url": "https://azure-sdk-guidelines/core/general_introduction.html"
+        },
+        {
+          "id": "general_azurecore.html",
+          "title": "General Guidelines: Azure Core/Authentication and credentials",
+          "url": "https://azure-sdk-guidelines/core/general_azurecore.html"
+        },
+        {
+          "id": "general_azurecore.html",
+          "title": "General Guidelines: Azure Core/The HTTP pipeline/Authentication policy",
+          "url": "https://azure-sdk-guidelines/core/general_azurecore.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "4",
+        "segment_topic": "Content Validation and Input Type Changes",
+        "title": "Avoid Ambiguous String-Based Parameters",
+        "problem": "APIs that accept string-based parameters can lead to inconsistent behavior and bugs. For example, when an API accepts a string input, it may inconsistently trim or encode the data, leading to unexpected results. This is problematic because it can cause data corruption and make debugging difficult, especially in cases where the API interacts with different data sources or libraries.",
+        "recommended_solution": "Deprecate the use of string-based parameters in favor of more structured data types. BEFORE: def upload_data(data: str, length: Optional[int] = None). AFTER: def upload_data(data: bytes, length: Optional[int] = None). This approach ensures consistent handling of data, improves type safety, and reduces the risk of encoding errors. Consider using helper methods to handle encoding explicitly when necessary.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:03:31.450",
+        "end_timestamp": "00:05:03.920",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge recommends avoiding ambiguous string-based parameters in APIs by replacing them with more structured data types such as bytes. This aligns with Azure SDK guidelines that emphasize type safety, clear parameter validation, and consistent API behavior. Although the official guidelines do not explicitly mention this exact scenario, the principle of improving type safety and reducing bugs is consistent with the general design and implementation guidelines for Azure SDKs, especially in Python. The recommendation to use helper methods for explicit encoding also aligns with best practices for clarity and correctness in API design.",
+      "supportingGuidelines": [
+        {
+          "id": "python_implementation.html",
+          "title": "Python Guidelines: Implementation/API implementation/Service client",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html"
+        },
+        {
+          "id": "python_implementation.html",
+          "title": "Python Guidelines: Implementation/Python language and code style/Method signatures",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html"
+        },
+        {
+          "id": "general_design.html",
+          "title": "General Guidelines: API Design/Authentication",
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "5",
+        "segment_topic": "API Versioning and Code Review",
+        "title": "Avoid Using Strings for Byte Data",
+        "problem": "Using strings to represent byte data in APIs can lead to confusion and errors. For example, a method like 'def process_data(data: str)' might be used incorrectly with byte data, causing runtime issues. This pattern is problematic because it lacks type safety and can lead to unexpected behavior when handling binary data. Common scenarios include file I/O operations and network communication where byte data is prevalent.",
+        "recommended_solution": "Use explicit byte types for handling binary data in APIs. For instance, change 'def process_data(data: str)' to 'def process_data(data: bytes)'. This ensures type safety and clarity, reducing errors related to data handling. The improved approach enhances developer experience by making the API's intent clear. Alternative approaches include using helper methods to convert between types. Apply this pattern in any API dealing with binary data.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:05:04.640",
+        "end_timestamp": "00:05:14.080",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge recommends using explicit byte types for handling binary data in APIs instead of strings, to ensure type safety and clarity. This aligns with the Azure SDK design principles of making APIs clear and discoverable, improving developer experience, and avoiding confusion or runtime errors. Although the official guidelines do not explicitly mention byte vs string usage for binary data, the recommendation supports the general principles of clear API design and type safety emphasized in the guidelines.",
+      "supportingGuidelines": [
+        {
+          "id": "general_introduction.html",
+          "title": "General Guidelines: Introduction/Design principles/Diagnosable",
+          "url": "https://azure.github.io/azure-sdk/general_introduction.html"
+        },
+        {
+          "id": "general_design.html",
+          "title": "General Guidelines: API Design",
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
+        },
+        {
+          "id": "python_implementation.html",
+          "title": "Python Guidelines: Implementation/API implementation/Service client",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "5",
+        "segment_topic": "API Versioning and Code Review",
+        "title": "Deprecate Boolean for Content Validation",
+        "problem": "Using a boolean for content validation limits flexibility and can lead to confusion. For example, 'validate_content: bool' only allows true/false, which is insufficient for specifying different validation algorithms. This approach is problematic because it restricts the ability to choose specific validation methods, leading to potential misinterpretation and limited functionality. Common scenarios include data integrity checks where multiple algorithms might be needed.",
+        "recommended_solution": "Introduce a more flexible validation mechanism using enumerations or literals. For instance, replace 'validate_content: bool' with 'validate_content: ValidationAlgorithm' where 'ValidationAlgorithm' is an enum with options like CRC64, MD5, etc. This approach allows specifying the desired algorithm, enhancing clarity and functionality. The improved method supports multiple validation types, providing better developer experience and adaptability. Apply this pattern in APIs requiring flexible validation options.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:07:35.440",
+        "end_timestamp": "00:09:37.188",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge recommends replacing a boolean parameter for content validation with an enumeration to specify different validation algorithms. This approach aligns with Azure SDK guidelines that encourage using enumerations for parameters where multiple options exist, improving clarity and flexibility. Although the provided official guidelines do not explicitly mention boolean vs enum for validation parameters, the principle of using enums for clear, extensible options is consistent with best practices shown in the guidelines, such as extensible enumerations in Python and clear API design. Therefore, the recommendation to use an enum for validation algorithms is compliant with Azure SDK design guidelines.",
+      "supportingGuidelines": [
+        {
+          "id": "python-models-repr",
+          "title": "Python Guidelines: Implementation/API implementation/Supporting types - Extensible enumerations",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html#extensible-enumerations"
+        },
+        {
+          "id": "general-service-apiversion-7",
+          "title": "General Guidelines: API Design/Service API versions",
+          "url": "https://azure.github.io/azure-sdk/general_design.html#service-api-versions"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "6",
+        "segment_topic": "Algorithm Discussion and Code Comments",
+        "title": "Clarify Algorithm Naming in APIs",
+        "problem": "Using ambiguous or legacy algorithm names in APIs can lead to confusion and misinterpretation. For example, naming an algorithm 'MD5' when it actually implements a different or modified version can mislead developers. This is problematic because it affects the accuracy of documentation and developer understanding, leading to potential errors in implementation. Common scenarios include cryptographic functions and data validation methods where precise algorithm identification is crucial.",
+        "recommended_solution": "Ensure clear and accurate naming conventions for algorithms in APIs. For instance, if an algorithm is a modified version of MD5, name it 'ModifiedMD5' or similar to reflect its true nature. This approach improves documentation clarity and developer understanding, reducing errors related to algorithm implementation. The improved naming convention enhances trust and reliability in API usage. Apply this pattern in any API involving algorithm selection or cryptographic functions.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:09:06.880",
+        "end_timestamp": "00:09:14.640",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge emphasizes the importance of clear and accurate naming conventions for algorithms in APIs, especially when dealing with cryptographic functions or data validation methods. This aligns with the Azure SDK guidelines' general emphasis on clarity, accuracy, and developer understanding in API design and documentation. Although the extracted knowledge is specific to algorithm naming, it complements the broader Azure SDK guidelines that require clear documentation and naming to avoid developer confusion and errors. There is no conflict with the official guidelines; rather, it reinforces the principle of clear and precise API design.",
+      "supportingGuidelines": [
+        {
+          "id": "python-docs-style-guide",
+          "title": "Python Guidelines: Documentation",
+          "url": "https://azure.github.io/azure-sdk/python_documentation.html"
+        },
+        {
+          "id": "general-service-apiversion-7",
+          "title": "General Guidelines: API Design/Service API versions",
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "7",
+        "segment_topic": "Java API Review and Comments",
+        "title": "Use Descriptive Parameter Names",
+        "problem": "Using abbreviated or unclear parameter names in APIs can lead to confusion and misinterpretation. For example, using 'TID' instead of 'tenant ID' can obscure the parameter's purpose and make the API harder to understand. This is problematic because it affects the readability and maintainability of the code, leading to potential errors in implementation. Common scenarios include configuration settings and data processing functions where clear parameter identification is crucial.",
+        "recommended_solution": "Adopt descriptive and clear parameter names in APIs. For instance, replace 'TID' with 'tenant ID' to accurately reflect the parameter's purpose. This approach improves code readability and developer understanding, reducing errors related to parameter usage. The improved naming convention enhances maintainability and clarity in API usage. Apply this pattern in any API involving configuration settings or data processing functions.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:10:14.400",
+        "end_timestamp": "00:10:29.920",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge emphasizes the use of descriptive and clear parameter names in APIs, such as replacing abbreviations like 'TID' with 'tenant ID' to improve readability and maintainability. This aligns with the Azure SDK design guidelines' general principles of clarity and developer understanding in API design. Although the provided official guidelines do not explicitly mention parameter naming conventions, the emphasis on clear, descriptive naming is consistent with best practices for API usability and maintainability promoted by the Azure SDK guidelines.",
+      "supportingGuidelines": [
+        {
+          "id": "general_design.html",
+          "title": "General Guidelines: API Design/Service API versions",
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "8",
+        "segment_topic": "API Review and Performance Testing Discussion",
+        "title": "STG 101 API Views Follow-up",
+        "problem": "The meeting discusses the need to review API views for C++ and JavaScript with the Shanghai team before the beta release. This highlights the importance of cross-team collaboration and timely reviews in API development projects.",
+        "recommended_solution": "Ensure regular communication and follow-up with all teams involved in API development to meet deadlines and maintain quality standards. Use project management tools to track progress and facilitate collaboration.",
+        "category": "MEETING_CONTEXT",
+        "start_timestamp": "00:10:57.600",
+        "end_timestamp": "00:11:02.000",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge emphasizes the importance of cross-team collaboration and timely API reviews before beta releases, which aligns with the Azure SDK guidelines' emphasis on thorough API design and review processes to maintain quality standards. While the extracted knowledge focuses on project management and communication practices, the official guidelines cover API design, documentation, implementation, and compatibility. There is no conflict between the need for regular communication and review meetings and the official guidelines; rather, the extracted knowledge complements the guidelines by highlighting practical steps to ensure adherence to quality and review standards.",
+      "supportingGuidelines": [
+        {
+          "id": "general-docs-contentdev",
+          "title": "General Guidelines: Documentation - Include your service's content developer in the Architecture Board review",
+          "url": "https://azure.github.io/azure-sdk/general_documentation.html"
+        },
+        {
+          "id": "general-docs-style-guide",
+          "title": "General Guidelines: Documentation - Adhere to Microsoft style guides for public-facing documentation",
+          "url": "https://azure.github.io/azure-sdk/general_documentation.html"
+        },
+        {
+          "id": "general-design",
+          "title": "General Guidelines: API Design/Namespaces/Example Namespaces",
+          "url": "https://azure.github.io/azure-sdk/general_design.html"
+        },
+        {
+          "id": "general-compatibility",
+          "title": "General Guidelines: Compatibility Principles/API Changes",
+          "url": "https://azure.github.io/azure-sdk/general_compatibility.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "8",
+        "segment_topic": "API Review and Performance Testing Discussion",
+        "title": "Adjusting Default Concurrency Based on Performance Results",
+        "problem": "In API development, default concurrency settings can significantly impact performance. Incorrect settings may lead to suboptimal resource utilization and degraded performance, especially in languages like .NET and Python. This issue often arises when default settings are not tailored to the specific needs of the application or its environment.",
+        "recommended_solution": "Conduct thorough performance testing to determine optimal concurrency settings for your API. Adjust default settings based on empirical data to enhance performance. For example, if testing shows that increasing concurrency improves throughput, update the default settings accordingly. This approach ensures better resource utilization and improved application performance.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:11:20.640",
+        "end_timestamp": "00:17:22.938",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge recommends conducting thorough performance testing to determine optimal default concurrency settings and adjusting them based on empirical data. This approach aligns with the Azure SDK design principles emphasizing performance and productivity by tailoring configurations to the application's needs. While the official guidelines do not explicitly mention concurrency defaults, they emphasize respecting system settings and environment variables for configuration, and encourage performance considerations. Adjusting defaults based on testing does not conflict with these principles and supports better resource utilization and application performance.",
+      "supportingGuidelines": [
+        {
+          "id": "azurecore-config-respect-the-system",
+          "title": "Respect system settings for proxies",
+          "url": "https://azure-sdk-guidelines/core/general_azurecore.html#azurecore-config-respect-the-system"
+        },
+        {
+          "id": "azurecore-config-envvars-azure-prefix",
+          "title": "Prefix Azure-specific environment variables with AZURE_",
+          "url": "https://azure-sdk-guidelines/core/general_azurecore.html#azurecore-config-envvars-azure-prefix"
+        },
+        {
+          "id": "general_design_performance",
+          "title": "Design principles emphasizing performance and productivity",
+          "url": "https://azure-sdk-guidelines/general_introduction.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "9",
+        "segment_topic": "Performance and Cost Optimization in SDKs",
+        "title": "Performance and Cost Optimization",
+        "problem": "The SDKs are facing challenges in balancing performance improvements with cost optimization, particularly in storage solutions. The push for better performance and cost of goods sold (COGS) is leading to a series of changes across different programming languages, including Python, .NET, and potentially C. These changes aim to enhance performance, especially for machine learning customers, but may introduce complexities that need careful management.",
+        "recommended_solution": "The recommended approach involves making changes that are mostly transparent to customers, ensuring that performance improvements do not compromise data integrity. This includes thorough testing of threaded code paths and considering potential interactions with customer code. The focus is on achieving significant performance gains, such as 4X to 8X improvements, while maintaining data integrity and customer trust.",
+        "category": "MEETING_CONTEXT",
+        "start_timestamp": "00:17:24.625",
+        "end_timestamp": "00:20:54.812",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge emphasizes performance and cost optimization improvements that are mostly transparent to customers, with a strong focus on maintaining data integrity and customer trust. This aligns well with the Azure SDK guidelines which prioritize developer productivity, dependability, and compatibility. The guidelines stress that breaking changes should be avoided or carefully reviewed, and that SDK improvements should not compromise user experience or compatibility. The recommended approach of thorough testing, especially of threaded code paths, and consideration of interactions with customer code supports the guideline principles of dependability and diagnosability. Therefore, the approach described is consistent with the official Azure SDK design guidelines.",
+      "supportingGuidelines": [
+        {
+          "id": "general_introduction.html",
+          "title": "General Guidelines: Introduction/Design principles",
+          "url": "https://azure-sdk-guidelines/general_introduction.html"
+        },
+        {
+          "id": "general_compatibility.html",
+          "title": "General Guidelines: Compatibility/Compatibility Principles/Azure SDK Compatibility Reviews",
+          "url": "https://azure-sdk-guidelines/general_compatibility.html"
+        },
+        {
+          "id": "python_design.html",
+          "title": "Python Guidelines: API Design/Introduction/Design principles",
+          "url": "https://azure-sdk-guidelines/python_design.html"
+        }
+      ]
+    },
+    {
+      "knowledge": {
+        "segment_id": "10",
+        "segment_topic": "Concurrency and Threading Challenges",
+        "title": "Manage Threading in API Design",
+        "problem": "Switching from single-threaded to multi-threaded operations in APIs can introduce significant complexity and potential issues, such as process interference and handling interrupts. For example, a function that processes data might hang or fail to respond to interrupts when moved to a threaded model. This is problematic because it can lead to poor performance and unresponsive applications, especially in environments like Python where threading behavior can vary.",
+        "recommended_solution": "Conduct thorough testing, including chaos testing, to ensure stability when using threads. BEFORE: `def process_data(): run_in_main_thread()`. AFTER: `def process_data(): run_in_thread() with exception_handling()`. This approach helps manage potential issues like hanging and interrupt handling. Consider alternative concurrency models like async programming if threading proves problematic. Apply this pattern when moving operations off the main thread to improve responsiveness and reliability.",
+        "category": "API_DESIGN_GUIDELINE",
+        "start_timestamp": "00:21:01.188",
+        "end_timestamp": "00:23:19.188",
+        "summary_path": "output\\Azure_SDK_Review___Beta_SDK_for_Storage_20251209_140607_Meeting_Recording_summary.md"
+      },
+      "complianceStatus": "Compliant",
+      "explanation": "The extracted knowledge aligns well with the official Azure SDK guidelines for Python, particularly the guidance on threading and concurrency. It emphasizes the importance of managing threading carefully to avoid issues such as hanging and unresponsiveness, which is consistent with the python_implementation guideline that mandates explicit documentation of thread safety and recommends allowing callers to pass in an Executor rather than managing threads internally. The suggestion to consider async programming as an alternative concurrency model also aligns with modern best practices. Furthermore, the recommendation to conduct thorough testing, including chaos testing, supports the general guideline of thoughtful exception handling and ensuring reliability. There is no conflict with the documented requirements; rather, the extracted knowledge complements and reinforces the official guidance.",
+      "supportingGuidelines": [
+        {
+          "id": "python-codestyle-thread-affinity",
+          "title": "Maintain thread affinity for user-provided callbacks unless explicitly documented otherwise",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html#threading"
+        },
+        {
+          "id": "python-codestyle-document-thread-safety",
+          "title": "Explicitly document thread safety of methods",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html#threading"
+        },
+        {
+          "id": "python-codestyle-use-executor",
+          "title": "Allow callers to pass in an Executor instance for concurrency",
+          "url": "https://azure.github.io/azure-sdk/python_implementation.html#threading"
+        },
+        {
+          "id": "general_introduction.html",
+          "title": "General Guidelines: Introduction/Design principles/Diagnosable",
+          "url": "https://azure.github.io/azure-sdk-guidelines/general_introduction.html"
+        }
+      ]
+    }
+  ]
+}
